@@ -13,20 +13,16 @@ import javax.swing.JButton;
 
 import persistencia.conexion.Conexion;
 
-public class Vista
+public class VentanaCategoria
 {
 	private JFrame frmAgenda;
-	private JTable tablaPersonas;
+	private JTable tablaCategoria;
 	private JButton btnAgregar;
 	private JButton btnBorrar;
-	private JButton btnReporte;
-	private DefaultTableModel modelPersonas;
-	private String[] nombreColumnas = {"Nombre y apellido", "Telefono", "Email", "Cumplea\u00F1os", "Localidad", "Calle", "Altura", "Piso", "Dpto", "Tipo contacto"};
-	private JButton btnLocalidad;
-	private JButton btnCategoria;
-	private JButton btnEditar;
+	private DefaultTableModel modelCategoria;
+	private String[] nombreColumnas = {"Categorias de contactos"};
 
-	public Vista() 
+	public VentanaCategoria() 
 	{
 		super();
 		initialize();
@@ -36,54 +32,42 @@ public class Vista
 	private void initialize() 
 	{
 		frmAgenda = new JFrame();
-		frmAgenda.setTitle("Agenda");
-		frmAgenda.setBounds(100, 100, 870, 358);
+		frmAgenda.setTitle("ABM Categoria de contactos");
+		frmAgenda.setBounds(100, 100, 461, 358);
 		frmAgenda.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmAgenda.getContentPane().setLayout(null);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(0, 0, 854, 319);
+		panel.setBounds(0, 0, 445, 319);
 		frmAgenda.getContentPane().add(panel);
 		panel.setLayout(null);
 		
-		JScrollPane spPersonas = new JScrollPane();
-		spPersonas.setBounds(10, 11, 834, 182);
-		panel.add(spPersonas);
+		JScrollPane spCategoria = new JScrollPane();
+		spCategoria.setBounds(10, 11, 323, 297);
+		panel.add(spCategoria);
 		
-		modelPersonas = new DefaultTableModel(null,nombreColumnas);
-		tablaPersonas = new JTable(new DefaultTableModel(
+		modelCategoria = new DefaultTableModel(null,nombreColumnas);
+		tablaCategoria = new JTable(new DefaultTableModel(
 			new Object[][] {
 			},
 			new String[] {
-				"Nombre y apellido", "Telefono", "Email", "Cumplea\u00F1os", "Localidad", "Calle", "Altura", "Piso", "Dpto", "Categoria contacto"
+				"Categorias de contactos"
 			}
 		));
 		
-		spPersonas.setViewportView(tablaPersonas);
+		spCategoria.setViewportView(tablaCategoria);
 		
 		btnAgregar = new JButton("Agregar");
-		btnAgregar.setBounds(10, 285, 89, 23);
+		btnAgregar.setBounds(343, 11, 89, 23);
 		panel.add(btnAgregar);
 		
-		btnEditar = new JButton("Editar");
-		btnEditar.setBounds(109, 285, 89, 23);
+		JButton btnEditar = new JButton("Editar");
+		btnEditar.setBounds(343, 45, 89, 23);
 		panel.add(btnEditar);
 		
 		btnBorrar = new JButton("Borrar");
-		btnBorrar.setBounds(208, 285, 89, 23);
+		btnBorrar.setBounds(343, 79, 89, 23);
 		panel.add(btnBorrar);
-		
-		btnReporte = new JButton("Reporte");
-		btnReporte.setBounds(307, 285, 89, 23);
-		panel.add(btnReporte);
-		
-		btnLocalidad = new JButton("Localidad");
-		btnLocalidad.setBounds(654, 285, 89, 23);
-		panel.add(btnLocalidad);
-		
-		btnCategoria = new JButton("Categoria");
-		btnCategoria.setBounds(755, 285, 89, 23);
-		panel.add(btnCategoria);
 	}
 	
 	public void show()
@@ -115,35 +99,15 @@ public class Vista
 	{
 		return btnBorrar;
 	}
-	
-	public JButton getBtnEditar() 
+
+	public DefaultTableModel getModelCategoria() 
 	{
-		return btnEditar;
+		return modelCategoria;
 	}
 	
-	public JButton getBtnReporte() 
+	public JTable getTablaCategoria()
 	{
-		return btnReporte;
-	}
-	
-	public JButton getBtnLocalidad()
-	{
-		return btnLocalidad;
-	}
-	
-	public JButton getBtnCategoria()
-	{
-		return btnCategoria;
-	}
-	
-	public DefaultTableModel getModelPersonas() 
-	{
-		return modelPersonas;
-	}
-	
-	public JTable getTablaPersonas()
-	{
-		return tablaPersonas;
+		return tablaCategoria;
 	}
 
 	public String[] getNombreColumnas() 
