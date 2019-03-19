@@ -7,33 +7,32 @@ public class PersonaDTO
 	private String telefono;
 	private String email;
 	private String cumpleaños;
-	private String localidad;
 	private String calle;
 	private String altura;
-	private String piso;
+	private String piso;  
 	private String dpto;
-	private String categoria;
+	
+	private CategoriaDTO categoria;
+	private LocalidadDTO localidad;
 
-	public PersonaDTO(int idPersona, String nombre, String telefono, String email, String cumpleaños, String localidad, String calle, String altura, String piso, String dpto, String categoria)
+	public PersonaDTO(int idPersona, String nombre, String telefono, String email, 
+						String cumpleaños,String calle, String altura, String piso, String dpto)
 	{
 		this.idPersona = idPersona;
 		this.nombre = nombre;
 		this.telefono = telefono;
 		this.email = email;
 		this.cumpleaños = cumpleaños;
-		this.localidad = localidad;
 		this.calle = calle;
 		this.altura = altura;
 		this.piso = piso;
 		this.dpto = dpto;
-		this.categoria = categoria;
 	}
 	
 	public int getIdPersona() 
 	{
 		return this.idPersona;
 	}
-
 	public void setIdPersona(int idPersona) 
 	{
 		this.idPersona = idPersona;
@@ -43,7 +42,6 @@ public class PersonaDTO
 	{
 		return this.nombre;
 	}
-
 	public void setNombre(String nombre) 
 	{
 		this.nombre = nombre;
@@ -53,7 +51,6 @@ public class PersonaDTO
 	{
 		return this.telefono;
 	}
-
 	public void setTelefono(String telefono) 
 	{
 		this.telefono = telefono;
@@ -63,7 +60,6 @@ public class PersonaDTO
 	{
 		return email;
 	}
-	
 	public void setEmail(String email)
 	{
 		this.email = email;
@@ -73,24 +69,14 @@ public class PersonaDTO
 	{
 		return cumpleaños;
 	}
-	
 	public void setCumpleaños(String cumpleaños)
 	{
 		this.cumpleaños = cumpleaños;
-	}
-	
-	public String getLocalidad() {
-		return localidad;
-	}
-
-	public void setLocalidad(String localidad) {
-		this.localidad = localidad;
 	}
 
 	public String getCalle() {
 		return calle;
 	}
-
 	public void setCalle(String calle) {
 		this.calle = calle;
 	}
@@ -98,7 +84,6 @@ public class PersonaDTO
 	public String getAltura() {
 		return altura;
 	}
-
 	public void setAltura(String altura) {
 		this.altura = altura;
 	}
@@ -106,7 +91,6 @@ public class PersonaDTO
 	public String getPiso() {
 		return piso;
 	}
-
 	public void setPiso(String piso) {
 		this.piso = piso;
 	}
@@ -114,16 +98,23 @@ public class PersonaDTO
 	public String getDpto() {
 		return dpto;
 	}
-
 	public void setDpto(String dpto) {
 		this.dpto = dpto;
 	}
 
-	public String getCategoria() {
+	public CategoriaDTO getCategoria() {
 		return categoria;
 	}
-
-	public void setCategoria(String categoria) {
+	
+	public LocalidadDTO getLocalidad() {
+		return localidad;
+	}
+	
+	public void agregarCategoria(CategoriaDTO categoria) {
 		this.categoria = categoria;
+	}
+	
+	public void agregarLocalidad(LocalidadDTO localidad) {
+		this.localidad = localidad;
 	}
 }

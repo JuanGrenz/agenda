@@ -4,8 +4,7 @@ import java.util.List;
 
 import dto.PersonaDTO;
 
-public interface PersonaDAO 
-{
+public interface PersonaDAO {
 	
 	public boolean insert(PersonaDTO persona);
 

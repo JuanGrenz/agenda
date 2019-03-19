@@ -38,13 +38,11 @@ public class Controlador implements ActionListener
 					this.ventanaPersona.getTxtTelefono().getText(),
 					this.ventanaPersona.getTxtEmail().getText(),
                     this.ventanaPersona.getTxtCumpleaños().getText(),
-                    "torcuato",
 //					this.ventanaPersona.getTxtLocalidad(),
 					this.ventanaPersona.getTxtCalle().getText(),
 					this.ventanaPersona.getTxtAltura().getText(),
 					this.ventanaPersona.getTxtPiso().getText(),
-					this.ventanaPersona.getTxtDpto().getText(),
-					"amigo");
+					this.ventanaPersona.getTxtDpto().getText());
 					//this.ventanaPersona.getTxtCategoria());				
 					
 			this.agenda.agregarPersona(nuevaPersona);
