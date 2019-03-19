@@ -1,8 +1,12 @@
 package presentacion.vista;
 
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
@@ -101,6 +105,7 @@ public class VentanaEditarPersona extends JFrame
 		txtTelefono.setBounds(199, 49, 207, 20);
 		panel.add(txtTelefono);
 		txtTelefono.setColumns(10);
+		verificarNumero(txtTelefono);
 		
 		comboBoxLocalidad = new JComboBox<String>();
 		comboBoxLocalidad.setBounds(199, 90, 207, 20);
@@ -115,11 +120,13 @@ public class VentanaEditarPersona extends JFrame
 		txtAltura.setColumns(10);
 		txtAltura.setBounds(199, 172, 207, 20);
 		panel.add(txtAltura);
+		verificarNumero(txtAltura);
 		
 		txtPiso = new JTextField();
 		txtPiso.setBounds(199, 213, 207, 20);
 		panel.add(txtPiso);
 		txtPiso.setColumns(10);
+		verificarNumero(txtPiso);
 		
 		txtDpto = new JTextField();
 		txtDpto.setBounds(199, 254, 207, 20);
@@ -228,6 +235,23 @@ public class VentanaEditarPersona extends JFrame
 		this.txtEmail.setText(null);
 		this.txtCumpleaños.setText(null);
 		this.dispose();
+	}
+	
+	private void verificarNumero(JTextField campo) {
+		campo.addKeyListener(new KeyAdapter() 
+		{
+			@Override
+			public void keyTyped(KeyEvent e) 
+			{
+				char caracter = e.getKeyChar();
+				if (((caracter < '0') || (caracter > '9')) && (caracter != KeyEvent.VK_BACK_SPACE)
+						&& (caracter != '-' || campo.getText().contains("-"))
+						&& (caracter != '.' || campo.getText().contains("."))) {
+					e.consume();
+					JOptionPane.showMessageDialog(null, "Solo se admiten numeros en este campo.");
+				}
+			}
+		});
 	}
 }
 

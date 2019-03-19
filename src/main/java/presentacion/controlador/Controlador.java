@@ -301,5 +301,4 @@ public class Controlador implements ActionListener
 			// TODO Auto-generated method stub
 			
 		}
-		
 }
