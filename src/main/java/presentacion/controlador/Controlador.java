@@ -7,8 +7,9 @@ import modelo.Agenda;
 import presentacion.reportes.ReporteAgenda;
 import presentacion.vista.VentanaAgregarCategoria;
 import presentacion.vista.VentanaAgregarLocalidad;
-import presentacion.vista.VentanaAMPersona;
+import presentacion.vista.VentanaAgregarPersona;
 import presentacion.vista.VentanaCategoria;
+import presentacion.vista.VentanaEditarPersona;
 import presentacion.vista.VentanaLocalidad;
 import presentacion.vista.Vista;
 import dto.CategoriaDTO;
@@ -22,7 +23,8 @@ public class Controlador implements ActionListener
 		private List<LocalidadDTO> localidades_en_tabla;
 		private List<CategoriaDTO> categorias_en_tabla;
 		
-		private VentanaAMPersona ventanaAgregarMPersona;
+		private VentanaAgregarPersona ventanaAgregarPersona;
+		private VentanaEditarPersona ventanaEditarPersona;
 		private VentanaAgregarLocalidad ventanaAgregarLocalidad;
 		private VentanaAgregarCategoria ventanaAgregarCategoria;
 		private VentanaLocalidad ventanaLocalidad;
@@ -32,9 +34,10 @@ public class Controlador implements ActionListener
 		public Controlador(Vista vista, Agenda agenda)
 		{
 			this.vista = vista;
-			this.ventanaAgregarMPersona = VentanaAMPersona.getInstance();
+			this.ventanaAgregarPersona = VentanaAgregarPersona.getInstance();
 			this.ventanaLocalidad = VentanaLocalidad.getInstance();
 			this.ventanaCategoria = VentanaCategoria.getInstance();
+			this.ventanaEditarPersona = VentanaEditarPersona.getInstance();
 			this.ventanaAgregarLocalidad = VentanaAgregarLocalidad.getInstance();
 			this.ventanaAgregarCategoria = VentanaAgregarCategoria.getInstance();
 			
@@ -49,7 +52,7 @@ public class Controlador implements ActionListener
 			this.ventanaCategoria.getBtnAgregar().addActionListener(a->ventanaAgregarCategoria(a));
 			this.ventanaCategoria.getBtnBorrar().addActionListener(s->borrarCategoria(s));
 
-			this.ventanaAgregarMPersona.getBtnConfirmar().addActionListener(p->guardarPersona(p));
+			this.ventanaAgregarPersona.getBtnConfirmar().addActionListener(p->guardarPersona(p));
 			this.ventanaAgregarLocalidad.getBtnConfirmar().addActionListener(c->guardarLocalidad(c));
 			this.ventanaAgregarCategoria.getBtnConfirmar().addActionListener(c->guardarCategoria(c));
 			
@@ -61,35 +64,50 @@ public class Controlador implements ActionListener
 		
 		private void ventanaAgregarPersona(ActionEvent a) {
 			this.llenarComboBox();
-			this.ventanaAgregarMPersona.mostrarVentana();
+			this.ventanaAgregarPersona.mostrarVentana();
 		}
 		
 		private void guardarPersona(ActionEvent p) {
 			this.agenda.agregarPersona(addPersona());
 			this.llenarTablaPersonas();
-			this.ventanaAgregarMPersona.cerrar();
+			this.ventanaAgregarPersona.cerrar();
 		}
 		
 		private PersonaDTO addPersona() {
 			PersonaDTO nuevaPersona = new PersonaDTO(0,
-					this.ventanaAgregarMPersona.getTxtNombre().getText(),
-					this.ventanaAgregarMPersona.getTxtTelefono().getText(),
-					this.ventanaAgregarMPersona.getTxtEmail().getText(),
-                    this.ventanaAgregarMPersona.getTxtCumpleaños().getText(),
-					this.ventanaAgregarMPersona.getTxtCalle().getText(),
-					this.ventanaAgregarMPersona.getTxtAltura().getText(),
-					this.ventanaAgregarMPersona.getTxtPiso().getText(),
-					this.ventanaAgregarMPersona.getTxtDpto().getText(),
-					this.ventanaAgregarMPersona.getTxtLocalidad(),
-					this.ventanaAgregarMPersona.getTxtCategoria());
+					this.ventanaAgregarPersona.getTxtNombre().getText(),
+					this.ventanaAgregarPersona.getTxtTelefono().getText(),
+					this.ventanaAgregarPersona.getTxtEmail().getText(),
+                    this.ventanaAgregarPersona.getTxtCumpleaños().getText(),
+					this.ventanaAgregarPersona.getTxtCalle().getText(),
+					this.ventanaAgregarPersona.getTxtAltura().getText(),
+					this.ventanaAgregarPersona.getTxtPiso().getText(),
+					this.ventanaAgregarPersona.getTxtDpto().getText(),
+					this.ventanaAgregarPersona.getTxtLocalidad(),
+					this.ventanaAgregarPersona.getTxtCategoria());
 					
 			return nuevaPersona;
 		}
 		
 		private void editarPersona(ActionEvent e) {
-			// TODO Auto-generated method stub
+			this.llenarComboBox();
+			this.llenarCampos(this.personas_en_tabla.get(this.vista.getTablaPersonas().getSelectedRow()));
+			this.ventanaEditarPersona.mostrarVentana();
 		}
 		
+		private void llenarCampos(PersonaDTO personaDTO) {
+			this.ventanaEditarPersona.getTxtNombre().setText(personaDTO.getNombre());
+			this.ventanaEditarPersona.getTxtTelefono().setText(personaDTO.getTelefono());
+			this.ventanaEditarPersona.getComboBoxLocalidad().setSelectedItem(personaDTO.getLocalidad());
+			this.ventanaEditarPersona.getTxtCalle().setText(personaDTO.getCalle());
+			this.ventanaEditarPersona.getTxtAltura().setText(personaDTO.getAltura());
+			this.ventanaEditarPersona.getTxtPiso().setText(personaDTO.getPiso());
+			this.ventanaEditarPersona.getTxtDpto().setText(personaDTO.getDpto());
+			this.ventanaEditarPersona.getTxtEmail().setText(personaDTO.getEmail());
+			this.ventanaEditarPersona.getTxtCumpleaños().setText(personaDTO.getCumpleaños());
+			this.ventanaEditarPersona.getComboBoxCategoriaContacto().setSelectedItem(personaDTO.getCategoria());
+		}
+
 		public void borrarPersona(ActionEvent s)
 		{
 			int[] filas_seleccionadas = this.vista.getTablaPersonas().getSelectedRows();
@@ -233,14 +251,18 @@ public class Controlador implements ActionListener
 		}
 
 		private void llenarComboBox() {
-			this.ventanaAgregarMPersona.getComboBoxCategoriaContacto().removeAllItems();
-			this.ventanaAgregarMPersona.getComboBoxLocalidad().removeAllItems();
+			this.ventanaAgregarPersona.getComboBoxCategoriaContacto().removeAllItems();
+			this.ventanaAgregarPersona.getComboBoxLocalidad().removeAllItems();
+			this.ventanaEditarPersona.getComboBoxCategoriaContacto().removeAllItems();
+			this.ventanaEditarPersona.getComboBoxLocalidad().removeAllItems();
 			
 			for (CategoriaDTO categoria : this.agenda.obtenerCategorias()) {
-				this.ventanaAgregarMPersona.getComboBoxCategoriaContacto().addItem(categoria.getNombre());;
+				this.ventanaAgregarPersona.getComboBoxCategoriaContacto().addItem(categoria.getNombre());
+				this.ventanaEditarPersona.getComboBoxCategoriaContacto().addItem(categoria.getNombre());
 			}
 			for (LocalidadDTO localidad : this.agenda.obtenerLocalidades()) {
-				this.ventanaAgregarMPersona.getComboBoxLocalidad().addItem(localidad.getNombre());;
+				this.ventanaAgregarPersona.getComboBoxLocalidad().addItem(localidad.getNombre());
+				this.ventanaEditarPersona.getComboBoxLocalidad().addItem(localidad.getNombre());
 			}
 		}
 		

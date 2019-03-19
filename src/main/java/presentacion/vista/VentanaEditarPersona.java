@@ -10,7 +10,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JComboBox;
 
 
-public class VentanaAMPersona extends JFrame 
+public class VentanaEditarPersona extends JFrame 
 {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -25,20 +25,20 @@ public class VentanaAMPersona extends JFrame
 	private JTextField txtCumpleaños;
 	private JComboBox<String> comboBoxCategoriaContacto;
 	private JButton btnConfirmar;
-	private static VentanaAMPersona INSTANCE;
+	private static VentanaEditarPersona INSTANCE;
 	
-	public static VentanaAMPersona getInstance()
+	public static VentanaEditarPersona getInstance()
 	{
 		if(INSTANCE == null)
-			return new VentanaAMPersona();
+			return new VentanaEditarPersona();
 		else
 			return INSTANCE;
 	}
 
-	private VentanaAMPersona() 
+	private VentanaEditarPersona() 
 	{
 		super();
-		setTitle("Persona");
+		setTitle("Editar persona");
 		
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 452, 604);

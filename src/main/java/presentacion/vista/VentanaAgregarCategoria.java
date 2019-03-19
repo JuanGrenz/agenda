@@ -26,7 +26,7 @@ public class VentanaAgregarCategoria extends JFrame
 	private VentanaAgregarCategoria() 
 	{
 		super();
-		setTitle("Categoria de contacto");
+		setTitle("Agregar categoria");
 		
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 397, 140);
