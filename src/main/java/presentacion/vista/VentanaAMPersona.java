@@ -75,7 +75,7 @@ public class VentanaAMPersona extends JFrame
 		lblPiso.setBounds(10, 216, 46, 14);
 		panel.add(lblPiso);
 		
-		JLabel lblDpto = new JLabel("Dpto");
+		JLabel lblDpto = new JLabel("Departamento");
 		lblDpto.setBounds(10, 257, 46, 14);
 		panel.add(lblDpto);
 		
@@ -83,11 +83,11 @@ public class VentanaAMPersona extends JFrame
 		lblEmail.setBounds(10, 298, 113, 14);
 		panel.add(lblEmail);
 		
-		JLabel lblCumpleaños = new JLabel("Fecha de cumpleaños");
+		JLabel lblCumpleaños = new JLabel("Cumpleaños");
 		lblCumpleaños.setBounds(10, 339, 113, 14);
 		panel.add(lblCumpleaños);
 		
-		JLabel lblCategoriaContacto = new JLabel("Categoria de contacto");
+		JLabel lblCategoriaContacto = new JLabel("Categoria");
 		lblCategoriaContacto.setBounds(10, 380, 113, 14);
 		panel.add(lblCategoriaContacto);
 		
