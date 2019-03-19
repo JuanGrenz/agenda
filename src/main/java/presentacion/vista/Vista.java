@@ -21,7 +21,7 @@ public class Vista
 	private JButton btnBorrar;
 	private JButton btnReporte;
 	private DefaultTableModel modelPersonas;
-	private String[] nombreColumnas = {"Nombre y apellido", "Telefono", "Email", "Cumplea\u00F1os", "Localidad", "Calle", "Altura", "Piso", "Dpto", "Tipo contacto"};
+	private String[] nombreColumnas = {"Nombre y apellido", "Telefono", "Email", "Cumpleaños", "Localidad", "Calle", "Altura", "Piso", "Dpto", "Categoria contacto"};
 	private JButton btnLocalidad;
 	private JButton btnCategoria;
 	private JButton btnEditar;
@@ -51,13 +51,7 @@ public class Vista
 		panel.add(spPersonas);
 		
 		modelPersonas = new DefaultTableModel(null,nombreColumnas);
-		tablaPersonas = new JTable(new DefaultTableModel(
-			new Object[][] {
-			},
-			new String[] {
-				"Nombre y apellido", "Telefono", "Email", "Cumplea\u00F1os", "Localidad", "Calle", "Altura", "Piso", "Dpto", "Categoria contacto"
-			}
-		));
+		tablaPersonas = new JTable(modelPersonas);
 		
 		spPersonas.setViewportView(tablaPersonas);
 		

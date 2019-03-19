@@ -6,7 +6,6 @@ import java.util.List;
 import modelo.Agenda;
 import presentacion.reportes.ReporteAgenda;
 import presentacion.vista.VentanaAMPersona;
-import presentacion.vista.VentanaPersona;
 import presentacion.vista.Vista;
 import dto.PersonaDTO;
 
@@ -95,7 +94,7 @@ public class Controlador implements ActionListener
 						this.personas_en_tabla.get(i).getDpto(),
 						this.personas_en_tabla.get(i).getCategoria()					
 						};
-				this.vista.getModelPersonas().addRow(fila);
+				this.vista.getModelPersonas().addRow(fila);			
 			}			
 		}
 
