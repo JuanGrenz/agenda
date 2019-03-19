@@ -13,6 +13,8 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 
 public class VentanaAgregarPersona extends JFrame 
@@ -107,7 +109,7 @@ public class VentanaAgregarPersona extends JFrame
 		txtTelefono.setBounds(199, 49, 207, 20);
 		panel.add(txtTelefono);
 		txtTelefono.setColumns(10);
-		verificarNumero(txtTelefono);
+		verificarCampo(txtTelefono);
 		
 		comboBoxLocalidad = new JComboBox<String>();
 		comboBoxLocalidad.setBounds(199, 90, 207, 20);
@@ -122,13 +124,13 @@ public class VentanaAgregarPersona extends JFrame
 		txtAltura.setColumns(10);
 		txtAltura.setBounds(199, 172, 207, 20);
 		panel.add(txtAltura);
-		verificarNumero(txtAltura);
+		verificarCampo(txtAltura);
 		
 		txtPiso = new JTextField();
 		txtPiso.setBounds(199, 213, 207, 20);
 		panel.add(txtPiso);
 		txtPiso.setColumns(10);
-		verificarNumero(txtPiso);
+		verificarCampo(txtPiso);
 		
 		txtDpto = new JTextField();
 		txtDpto.setBounds(199, 254, 207, 20);
@@ -141,10 +143,16 @@ public class VentanaAgregarPersona extends JFrame
 		txtEmail.setColumns(10);
 		
 		txtCumpleaños = new JFormattedTextField(df);
+		txtCumpleaños.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				txtCumpleaños.setToolTipText("Ingrese una fecha con el formato dd/mm");
+			}
+		});
 		txtCumpleaños.setBounds(199, 336, 207, 20);
 		panel.add(txtCumpleaños);
 		txtCumpleaños.setColumns(10);
-		esFecha(txtCumpleaños);
+		verificarCampo(txtCumpleaños);
 		
 		comboBoxCategoriaContacto = new JComboBox<String>();
 		comboBoxCategoriaContacto.setBounds(199, 377, 207, 20);
@@ -240,38 +248,26 @@ public class VentanaAgregarPersona extends JFrame
 		this.dispose();
 	}
 	
-	private void verificarNumero(JTextField campo) {
+	private void verificarCampo(JTextField campo) {
 		campo.addKeyListener(new KeyAdapter() 
 		{
 			@Override
 			public void keyTyped(KeyEvent e) 
 			{
 				char caracter = e.getKeyChar();
-				if (((caracter < '0') || (caracter > '9')) && (caracter != KeyEvent.VK_BACK_SPACE)
-						&& (caracter != '-' || campo.getText().contains("-"))
-						&& (caracter != '.' || campo.getText().contains("."))) {
+				if (((caracter < '0') || (caracter > '9')) &&
+						(caracter != KeyEvent.VK_BACK_SPACE) &&
+						(caracter != KeyEvent.VK_SLASH) &&
+						(caracter != KeyEvent.VK_DELETE) &&
+						(caracter != KeyEvent.VK_PERIOD) &&
+						(caracter != KeyEvent.VK_MINUS))
+				{
 					e.consume();
-					JOptionPane.showMessageDialog(null, "Solo se admiten numeros en este campo.");
+					JOptionPane.showMessageDialog(null, "Solo se admiten numeros o los simbolos ' - . / ' en este campo.");
 				}
 			}
 		});
 	}
 	
-	private void esFecha(JFormattedTextField campo)
-	{
-		campo.addKeyListener(new KeyAdapter()
-		{
-			public void keyTyped(KeyEvent e) {
-				char c = e.getKeyChar();
-				if (!((c >= '0') && (c <= '9') ||
-						(c == KeyEvent.VK_BACK_SPACE) ||
-						(c == KeyEvent.VK_DELETE) || (c == KeyEvent.VK_SLASH)))        
-				{
-					JOptionPane.showMessageDialog(null, "Ingrese una fecha con el formato dd/mm");
-					e.consume();
-				}
-			}
-		});
-	}
 }
 
