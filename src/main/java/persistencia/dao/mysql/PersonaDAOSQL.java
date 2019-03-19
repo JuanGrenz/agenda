@@ -12,7 +12,7 @@ import dto.PersonaDTO;
 
 public class PersonaDAOSQL implements PersonaDAO
 {
-	private static final String insert = "INSERT INTO personas(idPersona, nombre, telefono, email, cumpleaños, calle, altura, piso, dpto, localidadID, categoriaID) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+	private static final String insert = "INSERT INTO personas(idPersona, nombre, telefono, email, cumpleaños, calle, altura, piso, dpto, localidad, categoria) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 	private static final String delete = "DELETE FROM personas WHERE idPersona = ?";
 	private static final String readall = "SELECT * FROM personas";
 		
@@ -28,15 +28,12 @@ public class PersonaDAOSQL implements PersonaDAO
 			statement.setString(3, persona.getTelefono());
 			statement.setString(4, persona.getEmail());
 			statement.setString(5, persona.getCumpleaños());
-			//statement.setString(6, persona.getLocalidad().getNombre());
-			statement.setString(6, persona.getCalle());
-			statement.setString(7, persona.getAltura());
-			statement.setString(8, persona.getPiso());
-			statement.setString(9, persona.getDpto());
-			statement.setInt(10, 0);
-			statement.setInt(11, 0);
-			//statement.setInt(11, persona.getCategoria().getNombre());
-			
+			statement.setString(6, persona.getLocalidad().getNombre());
+			statement.setString(7, persona.getCalle());
+			statement.setString(8, persona.getAltura());
+			statement.setString(9, persona.getPiso());
+			statement.setString(10, persona.getDpto());
+			statement.setString(11, persona.getCategoria().getNombre());
 			if(statement.executeUpdate() > 0) //Si se ejecut� devuelvo true
 				return true;
 		} 

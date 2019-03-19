@@ -104,7 +104,6 @@ public class Controlador implements ActionListener
 			this.ventanaAMLocalidad.cerrar();
 		}
 		
-
 		private PersonaDTO addPersona() {
 			PersonaDTO nuevaPersona = new PersonaDTO(0,
 					this.ventanaPersona.getTxtNombre().getText(),
@@ -120,8 +119,8 @@ public class Controlador implements ActionListener
 		
 		private LocalidadDTO addLocalidad()
 		{
-			LocalidadDTO nuevaLocalidad = new LocalidadDTO(0, this.ventanaAMLocalidad.getTxtLocalidad().getText());
-			System.out.println(this.ventanaAMLocalidad.getTxtLocalidad().getText());
+			LocalidadDTO nuevaLocalidad = new LocalidadDTO(0, 
+					this.ventanaAMLocalidad.getTxtLocalidad().getText());
 			return nuevaLocalidad;
 		}
 

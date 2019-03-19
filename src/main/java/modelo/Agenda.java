@@ -20,6 +20,8 @@ public class Agenda
 	public Agenda(DAOAbstractFactory metodo_persistencia)
 	{
 		this.persona = metodo_persistencia.createPersonaDAO();
+		this.categoria = metodo_persistencia.createCategoriaDAO();
+		this.localidad = metodo_persistencia.createLocalidadDAO();
 	}
 	
 	public void agregarPersona(PersonaDTO nuevaPersona)
