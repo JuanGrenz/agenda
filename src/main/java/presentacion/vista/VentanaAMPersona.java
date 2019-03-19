@@ -40,107 +40,107 @@ public class VentanaAMPersona extends JFrame
 		setTitle("Persona");
 		
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 343, 604);
+		setBounds(100, 100, 452, 604);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(10, 11, 307, 543);
+		panel.setBounds(10, 11, 416, 543);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
 		JLabel lblNombreYApellido = new JLabel("Nombre y apellido");
-		lblNombreYApellido.setBounds(10, 11, 113, 14);
+		lblNombreYApellido.setBounds(10, 11, 179, 14);
 		panel.add(lblNombreYApellido);
 		
 		JLabel lblTelfono = new JLabel("Telefono");
-		lblTelfono.setBounds(10, 52, 113, 14);
+		lblTelfono.setBounds(10, 52, 179, 14);
 		panel.add(lblTelfono);
 		
 		JLabel lblLocalidad = new JLabel("Localidad");
-		lblLocalidad.setBounds(10, 93, 46, 14);
+		lblLocalidad.setBounds(10, 93, 179, 14);
 		panel.add(lblLocalidad);
 		
 		JLabel lblCalle = new JLabel("Calle");
-		lblCalle.setBounds(10, 134, 113, 14);
+		lblCalle.setBounds(10, 134, 179, 14);
 		panel.add(lblCalle);
 		
 		JLabel lblAltura = new JLabel("Altura");
-		lblAltura.setBounds(10, 175, 113, 14);
+		lblAltura.setBounds(10, 175, 179, 14);
 		panel.add(lblAltura);
 		
 		JLabel lblPiso = new JLabel("Piso");
-		lblPiso.setBounds(10, 216, 46, 14);
+		lblPiso.setBounds(10, 216, 179, 14);
 		panel.add(lblPiso);
 		
 		JLabel lblDpto = new JLabel("Departamento");
-		lblDpto.setBounds(10, 257, 46, 14);
+		lblDpto.setBounds(10, 257, 179, 14);
 		panel.add(lblDpto);
 		
 		JLabel lblEmail = new JLabel("Email");
-		lblEmail.setBounds(10, 298, 113, 14);
+		lblEmail.setBounds(10, 298, 179, 14);
 		panel.add(lblEmail);
 		
-		JLabel lblCumpleaños = new JLabel("Cumpleaños");
-		lblCumpleaños.setBounds(10, 339, 113, 14);
+		JLabel lblCumpleaños = new JLabel("Fecha de cumpleaños");
+		lblCumpleaños.setBounds(10, 339, 179, 14);
 		panel.add(lblCumpleaños);
 		
-		JLabel lblCategoriaContacto = new JLabel("Categoria");
-		lblCategoriaContacto.setBounds(10, 380, 113, 14);
+		JLabel lblCategoriaContacto = new JLabel("Categoria de contacto");
+		lblCategoriaContacto.setBounds(10, 380, 179, 14);
 		panel.add(lblCategoriaContacto);
 		
 		txtNombre = new JTextField();
-		txtNombre.setBounds(133, 8, 164, 20);
+		txtNombre.setBounds(199, 8, 207, 20);
 		panel.add(txtNombre);
 		txtNombre.setColumns(10);
 		
 		txtTelefono = new JTextField();
-		txtTelefono.setBounds(133, 49, 164, 20);
+		txtTelefono.setBounds(199, 49, 207, 20);
 		panel.add(txtTelefono);
 		txtTelefono.setColumns(10);
 		
 		comboBoxLocalidad = new JComboBox<String>();
-		comboBoxLocalidad.setBounds(133, 90, 164, 20);
+		comboBoxLocalidad.setBounds(199, 90, 207, 20);
 		panel.add(comboBoxLocalidad);
 		
 		txtCalle = new JTextField();
 		txtCalle.setColumns(10);
-		txtCalle.setBounds(133, 131, 164, 20);
+		txtCalle.setBounds(199, 131, 207, 20);
 		panel.add(txtCalle);
 		
 		txtAltura = new JTextField();
 		txtAltura.setColumns(10);
-		txtAltura.setBounds(133, 172, 164, 20);
+		txtAltura.setBounds(199, 172, 207, 20);
 		panel.add(txtAltura);
 		
 		txtPiso = new JTextField();
-		txtPiso.setBounds(133, 213, 164, 20);
+		txtPiso.setBounds(199, 213, 207, 20);
 		panel.add(txtPiso);
 		txtPiso.setColumns(10);
 		
 		txtDpto = new JTextField();
-		txtDpto.setBounds(133, 254, 164, 20);
+		txtDpto.setBounds(199, 254, 207, 20);
 		panel.add(txtDpto);
 		txtDpto.setColumns(10);
 		
 		txtEmail = new JTextField();
-		txtEmail.setBounds(133, 295, 164, 20);
+		txtEmail.setBounds(199, 295, 207, 20);
 		panel.add(txtEmail);
 		txtEmail.setColumns(10);
 		
 		txtCumpleaños = new JTextField();
-		txtCumpleaños.setBounds(133, 336, 164, 20);
+		txtCumpleaños.setBounds(199, 336, 207, 20);
 		panel.add(txtCumpleaños);
 		txtCumpleaños.setColumns(10);
 		
 		comboBoxCategoriaContacto = new JComboBox<String>();
-		comboBoxCategoriaContacto.setBounds(133, 377, 164, 20);
+		comboBoxCategoriaContacto.setBounds(199, 377, 207, 20);
 		panel.add(comboBoxCategoriaContacto);
 		
 		btnConfirmar = new JButton("Confirmar");
-		btnConfirmar.setBounds(208, 509, 89, 23);
+		btnConfirmar.setBounds(293, 509, 113, 23);
 		panel.add(btnConfirmar);
 		
 		this.setVisible(false);

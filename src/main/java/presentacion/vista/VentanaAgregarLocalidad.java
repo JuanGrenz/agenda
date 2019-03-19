@@ -7,23 +7,23 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-public class VentanaAMLocalidad extends JFrame 
+public class VentanaAgregarLocalidad extends JFrame 
 {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField txtLocalidad;
 	private JButton btnConfirmar;
-	private static VentanaAMLocalidad INSTANCE;
+	private static VentanaAgregarLocalidad INSTANCE;
 	
-	public static VentanaAMLocalidad getInstance()
+	public static VentanaAgregarLocalidad getInstance()
 	{
 		if(INSTANCE == null)
-			return new VentanaAMLocalidad();
+			return new VentanaAgregarLocalidad();
 		else
 			return INSTANCE;
 	}
 
-	private VentanaAMLocalidad() 
+	private VentanaAgregarLocalidad() 
 	{
 		super();
 		setTitle("Localidad");

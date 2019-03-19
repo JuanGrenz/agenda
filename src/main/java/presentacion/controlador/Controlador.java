@@ -5,8 +5,8 @@ import java.awt.event.ActionListener;
 import java.util.List;
 import modelo.Agenda;
 import presentacion.reportes.ReporteAgenda;
-import presentacion.vista.VentanaAMCategoria;
-import presentacion.vista.VentanaAMLocalidad;
+import presentacion.vista.VentanaAgregarCategoria;
+import presentacion.vista.VentanaAgregarLocalidad;
 import presentacion.vista.VentanaAMPersona;
 import presentacion.vista.VentanaCategoria;
 import presentacion.vista.VentanaLocalidad;
@@ -23,8 +23,8 @@ public class Controlador implements ActionListener
 		private List<CategoriaDTO> categorias_en_tabla;
 		
 		private VentanaAMPersona ventanaPersona;
-		private VentanaAMLocalidad ventanaAMLocalidad;
-		private VentanaAMCategoria ventanaAMCategoria;
+		private VentanaAgregarLocalidad ventanaAMLocalidad;
+		private VentanaAgregarCategoria ventanaAMCategoria;
 		private VentanaLocalidad ventanaLocalidad;
 		private VentanaCategoria ventanaCategoria;
 		private Agenda agenda;
@@ -35,8 +35,8 @@ public class Controlador implements ActionListener
 			this.ventanaPersona = VentanaAMPersona.getInstance();
 			this.ventanaLocalidad = VentanaLocalidad.getInstance();
 			this.ventanaCategoria = VentanaCategoria.getInstance();
-			this.ventanaAMLocalidad = VentanaAMLocalidad.getInstance();
-			this.ventanaAMCategoria = VentanaAMCategoria.getInstance();
+			this.ventanaAMLocalidad = VentanaAgregarLocalidad.getInstance();
+			this.ventanaAMCategoria = VentanaAgregarCategoria.getInstance();
 			
 			this.vista.getBtnAgregar().addActionListener(a->ventanaAgregarPersona(a));
 			this.vista.getBtnBorrar().addActionListener(s->borrarPersona(s));

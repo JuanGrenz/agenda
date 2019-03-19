@@ -7,23 +7,23 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-public class VentanaAMCategoria extends JFrame 
+public class VentanaAgregarCategoria extends JFrame 
 {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField txtCategoria;
 	private JButton btnConfirmar;
-	private static VentanaAMCategoria INSTANCE;
+	private static VentanaAgregarCategoria INSTANCE;
 	
-	public static VentanaAMCategoria getInstance()
+	public static VentanaAgregarCategoria getInstance()
 	{
 		if(INSTANCE == null)
-			return new VentanaAMCategoria();
+			return new VentanaAgregarCategoria();
 		else
 			return INSTANCE;
 	}
 
-	private VentanaAMCategoria() 
+	private VentanaAgregarCategoria() 
 	{
 		super();
 		setTitle("Categoria de contacto");
