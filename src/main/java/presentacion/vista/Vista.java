@@ -11,8 +11,6 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JButton;
 
-import persistencia.conexion.Conexion;
-
 public class Vista
 {
 	private JFrame frmAgenda;

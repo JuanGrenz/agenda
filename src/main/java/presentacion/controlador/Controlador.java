@@ -30,6 +30,7 @@ public class Controlador implements ActionListener
 		private VentanaLocalidad ventanaLocalidad;
 		private VentanaCategoria ventanaCategoria;
 		private Agenda agenda;
+		private int id;
 		
 		public Controlador(Vista vista, Agenda agenda)
 		{
@@ -96,6 +97,7 @@ public class Controlador implements ActionListener
 		private void ventanaEditarPersona(ActionEvent e) {
 			this.llenarComboBox();
 			this.llenarCampos(this.personas_en_tabla.get(this.vista.getTablaPersonas().getSelectedRow()));
+			id = this.personas_en_tabla.get(this.vista.getTablaPersonas().getSelectedRow()).getIdPersona();
 			this.ventanaEditarPersona.mostrarVentana();
 		}
 		
@@ -108,7 +110,7 @@ public class Controlador implements ActionListener
 		
 		private PersonaDTO editPersona()
 		{
-			PersonaDTO personaEditada = new PersonaDTO(0,
+			PersonaDTO personaEditada = new PersonaDTO(this.id,
 					this.ventanaEditarPersona.getTxtNombre().getText(),
 					this.ventanaEditarPersona.getTxtTelefono().getText(),
 					this.ventanaEditarPersona.getTxtEmail().getText(),
