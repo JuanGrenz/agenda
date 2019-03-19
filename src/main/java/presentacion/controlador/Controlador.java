@@ -13,6 +13,7 @@ public class Controlador implements ActionListener
 {
 		private Vista vista;
 		private List<PersonaDTO> personas_en_tabla;
+		
 		private VentanaAMPersona ventanaPersona; 
 		private Agenda agenda;
 		
@@ -32,29 +33,13 @@ public class Controlador implements ActionListener
 			this.ventanaPersona.mostrarVentana();
 		}
 
-		private void guardarPersona(ActionEvent p) {
-			PersonaDTO nuevaPersona = new PersonaDTO(0,
-					this.ventanaPersona.getTxtNombre().getText(),
-					this.ventanaPersona.getTxtTelefono().getText(),
-					this.ventanaPersona.getTxtEmail().getText(),
-                    this.ventanaPersona.getTxtCumpleaños().getText(),
-//					this.ventanaPersona.getTxtLocalidad(),
-					this.ventanaPersona.getTxtCalle().getText(),
-					this.ventanaPersona.getTxtAltura().getText(),
-					this.ventanaPersona.getTxtPiso().getText(),
-					this.ventanaPersona.getTxtDpto().getText());
-					//this.ventanaPersona.getTxtCategoria());				
+		private void guardarPersona(ActionEvent p) {	
 					
-			this.agenda.agregarPersona(nuevaPersona);
+			this.agenda.agregarPersona(addPersona());
 			this.llenarTabla();
 			this.ventanaPersona.cerrar();
 		}
-
-		private void mostrarReporte(ActionEvent r) {
-			ReporteAgenda reporte = new ReporteAgenda(agenda.obtenerPersonas());
-			reporte.mostrar();	
-		}
-
+		
 		public void borrarPersona(ActionEvent s)
 		{
 			int[] filas_seleccionadas = this.vista.getTablaPersonas().getSelectedRows();
@@ -64,6 +49,24 @@ public class Controlador implements ActionListener
 			}
 			
 			this.llenarTabla(); 
+		}
+
+		private PersonaDTO addPersona() {
+			PersonaDTO nuevaPersona = new PersonaDTO(0,
+					this.ventanaPersona.getTxtNombre().getText(),
+					this.ventanaPersona.getTxtTelefono().getText(),
+					this.ventanaPersona.getTxtEmail().getText(),
+                    this.ventanaPersona.getTxtCumpleaños().getText(),
+					this.ventanaPersona.getTxtCalle().getText(),
+					this.ventanaPersona.getTxtAltura().getText(),
+					this.ventanaPersona.getTxtPiso().getText(),
+					this.ventanaPersona.getTxtDpto().getText());
+			return nuevaPersona;
+		}
+
+		private void mostrarReporte(ActionEvent r) {
+			ReporteAgenda reporte = new ReporteAgenda(agenda.obtenerPersonas());
+			reporte.mostrar();	
 		}
 		
 		public void inicializar()
