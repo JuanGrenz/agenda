@@ -28,19 +28,43 @@ public class Controlador implements ActionListener
 		public Controlador(Vista vista, Agenda agenda)
 		{
 			this.vista = vista;
-			this.vista.getBtnAgregar().addActionListener(a->ventanaAgregarPersona(a));
-			this.vista.getBtnBorrar().addActionListener(s->borrarPersona(s));
-			this.vista.getBtnReporte().addActionListener(r->mostrarReporte(r));
 			this.ventanaPersona = VentanaAMPersona.getInstance();
 			this.ventanaLocalidad = VentanaLocalidad.getInstance();
 			this.ventanaCategoria = VentanaCategoria.getInstance();
-			this.ventanaPersona.getBtnConfirmar().addActionListener(p->guardarPersona(p));
+			this.ventanaAMLocalidad = VentanaAMLocalidad.getInstance();
+			this.ventanaAMCategoria = VentanaAMCategoria.getInstance();
+			this.vista.getBtnAgregar().addActionListener(a->ventanaAgregarPersona(a));
+			this.vista.getBtnBorrar().addActionListener(s->borrarPersona(s));
+			this.vista.getBtnEditar().addActionListener(e->editarPersona(e));
+			this.vista.getBtnReporte().addActionListener(r->mostrarReporte(r));
 			this.vista.getBtnLocalidad().addActionListener(l->ventanaLocalidad(l));
 			this.vista.getBtnCategoria().addActionListener(c->ventanaCategoria(c));
+			
+			this.ventanaPersona.getBtnConfirmar().addActionListener(p->guardarPersona(p));
+			
+			this.ventanaLocalidad.getBtnAgregar().addActionListener(a->ventanaAgregarLocalidad(a));
+//			this.ventanaLocalidad.getBtnBorrar().addActionListener(s->borrarLocalidad(s));
+//			this.ventanaLocalidad.getBtnEditar().addActionListener(e->editarLocalidad(e));
+			this.ventanaCategoria.getBtnAgregar().addActionListener(a->ventanaAgregarCategoria(a));
+//			this.ventanaCategoria.getBtnBorrar().addActionListener(s->borrarCategoria(s));
+//			this.ventanaCategoria.getBtnEditar().addActionListener(e->editarCategoria(e));
+
 			this.agenda = agenda;
 			this.personas_en_tabla = null;
 		}
 		
+		private void ventanaAgregarLocalidad(ActionEvent a) {
+			this.ventanaAMLocalidad.mostrarVentana();
+		}
+		
+		private void ventanaAgregarCategoria(ActionEvent a) {
+			this.ventanaAMCategoria.mostrarVentana();
+		}
+
+		private void editarPersona(ActionEvent e) {
+			// TODO Auto-generated method stub
+		}
+
 		private void ventanaAgregarPersona(ActionEvent a) {
 			this.ventanaPersona.mostrarVentana();
 		}

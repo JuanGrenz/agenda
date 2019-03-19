@@ -40,17 +40,17 @@ public class VentanaAMLocalidad extends JFrame
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
-		JLabel lblNombreLocalidad = new JLabel("Nombre de la localidad");
-		lblNombreLocalidad.setBounds(10, 14, 113, 14);
+		JLabel lblNombreLocalidad = new JLabel("Nombre de la localidad:");
+		lblNombreLocalidad.setBounds(10, 14, 228, 14);
 		panel.add(lblNombreLocalidad);
 		
 		txtLocalidad = new JTextField();
-		txtLocalidad.setBounds(143, 11, 228, 20);
+		txtLocalidad.setBounds(10, 39, 228, 20);
 		panel.add(txtLocalidad);
 		txtLocalidad.setColumns(10);
 		
 		btnConfirmar = new JButton("Confirmar");
-		btnConfirmar.setBounds(282, 67, 89, 23);
+		btnConfirmar.setBounds(245, 67, 126, 23);
 		panel.add(btnConfirmar);
 		
 		this.setVisible(false);

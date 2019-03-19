@@ -41,16 +41,16 @@ public class VentanaAMCategoria extends JFrame
 		panel.setLayout(null);
 		
 		JLabel lblCategoriaContacto = new JLabel("Categoria de contacto");
-		lblCategoriaContacto.setBounds(10, 14, 113, 14);
+		lblCategoriaContacto.setBounds(10, 14, 228, 14);
 		panel.add(lblCategoriaContacto);
 		
 		txtCategoria = new JTextField();
-		txtCategoria.setBounds(143, 11, 228, 20);
+		txtCategoria.setBounds(10, 39, 228, 20);
 		panel.add(txtCategoria);
 		txtCategoria.setColumns(10);
 		
 		btnConfirmar = new JButton("Confirmar");
-		btnConfirmar.setBounds(282, 67, 89, 23);
+		btnConfirmar.setBounds(250, 67, 121, 23);
 		panel.add(btnConfirmar);
 		
 		this.setVisible(false);

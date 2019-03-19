@@ -21,7 +21,7 @@ public class Vista
 	private JButton btnBorrar;
 	private JButton btnReporte;
 	private DefaultTableModel modelPersonas;
-	private String[] nombreColumnas = {"Nombre y apellido", "Telefono", "Email", "Cumpleaños", "Localidad", "Calle", "Altura", "Piso", "Dpto", "Categoria contacto"};
+	private String[] nombreColumnas = {"Nombre", "Telefono", "Email", "Cumpleaños", "Localidad", "Calle", "Altura", "Piso", "Dpto", "Categoria"};
 	private JButton btnLocalidad;
 	private JButton btnCategoria;
 	private JButton btnEditar;
