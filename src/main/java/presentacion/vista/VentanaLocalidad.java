@@ -15,7 +15,6 @@ public class VentanaLocalidad extends JFrame
 	private JPanel contentPane;
 	private JTable tablaLocalidad;
 	private JButton btnAgregar;
-	private JButton btnEditar;
 	private JButton btnBorrar;
 	private DefaultTableModel modelLocalidad;
 	private String[] nombreColumnas = {"Localidad"};
@@ -51,26 +50,16 @@ public class VentanaLocalidad extends JFrame
 		panel.add(spLocalidad);
 		
 		modelLocalidad = new DefaultTableModel(null,nombreColumnas);
-		tablaLocalidad = new JTable(new DefaultTableModel(
-			new Object[][] {
-			},
-			new String[] {
-				"Localidad"
-			}
-		));
+		tablaLocalidad = new JTable(modelLocalidad);
 		
 		spLocalidad.setViewportView(tablaLocalidad);
 		
 		btnAgregar = new JButton("Agregar");
-		btnAgregar.setBounds(343, 11, 89, 23);
+		btnAgregar.setBounds(333, 11, 99, 23);
 		panel.add(btnAgregar);
 		
-		btnEditar = new JButton("Editar");
-		btnEditar.setBounds(343, 45, 89, 23);
-		panel.add(btnEditar);
-		
 		btnBorrar = new JButton("Borrar");
-		btnBorrar.setBounds(343, 79, 89, 23);
+		btnBorrar.setBounds(333, 45, 99, 23);
 		panel.add(btnBorrar);
 		
 		this.setVisible(false);
@@ -84,11 +73,6 @@ public class VentanaLocalidad extends JFrame
 	public JButton getBtnAgregar() 
 	{
 		return btnAgregar;
-	}
-	
-	public JButton getBtnEditar()
-	{
-		return btnEditar;
 	}
 
 	public JButton getBtnBorrar() 

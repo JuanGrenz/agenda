@@ -69,7 +69,7 @@ public class CategoriaDAOSQL implements CategoriaDAO{
 			
 			while(resultSet.next())
 			{
-				categorias.add(new CategoriaDTO(resultSet.getInt("idLocalidad"),
+				categorias.add(new CategoriaDTO(resultSet.getInt("idCategoria"),
 						resultSet.getString("Nombre")
 						));
 			}
