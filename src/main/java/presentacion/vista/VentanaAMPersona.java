@@ -8,20 +8,21 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JComboBox;
 
+
 public class VentanaAMPersona extends JFrame 
 {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField txtNombre;
 	private JTextField txtTelefono;
-	private JComboBox comboBoxLocalidad;
+	private JComboBox<String> comboBoxLocalidad;
 	private JTextField txtCalle;
 	private JTextField txtAltura;
 	private JTextField txtPiso;
 	private JTextField txtDpto;
 	private JTextField txtEmail;
 	private JTextField txtCumpleaños;
-	private JComboBox comboBoxCategoriaContacto;
+	private JComboBox<String> comboBoxCategoriaContacto;
 	private JButton btnConfirmar;
 	private static VentanaAMPersona INSTANCE;
 	
@@ -100,7 +101,7 @@ public class VentanaAMPersona extends JFrame
 		panel.add(txtTelefono);
 		txtTelefono.setColumns(10);
 		
-		comboBoxLocalidad = new JComboBox();
+		comboBoxLocalidad = new JComboBox<String>();
 		comboBoxLocalidad.setBounds(133, 90, 164, 20);
 		panel.add(comboBoxLocalidad);
 		
@@ -134,7 +135,7 @@ public class VentanaAMPersona extends JFrame
 		panel.add(txtCumpleaños);
 		txtCumpleaños.setColumns(10);
 		
-		comboBoxCategoriaContacto = new JComboBox();
+		comboBoxCategoriaContacto = new JComboBox<String>();
 		comboBoxCategoriaContacto.setBounds(133, 377, 164, 20);
 		panel.add(comboBoxCategoriaContacto);
 		

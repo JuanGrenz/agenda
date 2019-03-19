@@ -5,6 +5,8 @@ import java.awt.event.ActionListener;
 import java.util.List;
 import modelo.Agenda;
 import presentacion.reportes.ReporteAgenda;
+import presentacion.vista.VentanaAMCategoria;
+import presentacion.vista.VentanaAMLocalidad;
 import presentacion.vista.VentanaAMPersona;
 import presentacion.vista.Vista;
 import dto.PersonaDTO;
@@ -14,7 +16,9 @@ public class Controlador implements ActionListener
 		private Vista vista;
 		private List<PersonaDTO> personas_en_tabla;
 		
-		private VentanaAMPersona ventanaPersona; 
+		private VentanaAMPersona ventanaPersona;
+		private VentanaAMLocalidad ventanaLocalidad;
+		private VentanaAMCategoria ventanaCategoria;
 		private Agenda agenda;
 		
 		public Controlador(Vista vista, Agenda agenda)
@@ -25,6 +29,8 @@ public class Controlador implements ActionListener
 			this.vista.getBtnReporte().addActionListener(r->mostrarReporte(r));
 			this.ventanaPersona = VentanaAMPersona.getInstance();
 			this.ventanaPersona.getBtnConfirmar().addActionListener(p->guardarPersona(p));
+			this.vista.getBtnLocalidad().addActionListener(l->ventanaLocalidad(l));
+			this.vista.getBtnCategoria().addActionListener(c->ventanaCategoria(c));
 			this.agenda = agenda;
 			this.personas_en_tabla = null;
 		}
@@ -32,7 +38,15 @@ public class Controlador implements ActionListener
 		private void ventanaAgregarPersona(ActionEvent a) {
 			this.ventanaPersona.mostrarVentana();
 		}
-
+		
+		private void ventanaLocalidad(ActionEvent l) {
+			this.ventanaLocalidad.mostrarVentana();
+		}
+		
+		private void ventanaCategoria(ActionEvent c) {
+			this.ventanaCategoria.mostrarVentana();
+		}
+		
 		private void guardarPersona(ActionEvent p) {	
 					
 			this.agenda.agregarPersona(addPersona());
