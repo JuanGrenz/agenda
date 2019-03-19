@@ -43,7 +43,7 @@ public class Controlador implements ActionListener
 			
 			this.vista.getBtnAgregar().addActionListener(a->ventanaAgregarPersona(a));
 			this.vista.getBtnBorrar().addActionListener(s->borrarPersona(s));
-			this.vista.getBtnEditar().addActionListener(e->editarPersona(e));
+			this.vista.getBtnEditar().addActionListener(e->ventanaEditarPersona(e));
 			this.vista.getBtnReporte().addActionListener(r->mostrarReporte(r));
 			this.vista.getBtnLocalidad().addActionListener(l->ventanaLocalidad(l));
 			this.vista.getBtnCategoria().addActionListener(c->ventanaCategoria(c));		
@@ -53,6 +53,7 @@ public class Controlador implements ActionListener
 			this.ventanaCategoria.getBtnBorrar().addActionListener(s->borrarCategoria(s));
 
 			this.ventanaAgregarPersona.getBtnConfirmar().addActionListener(p->guardarPersona(p));
+			this.ventanaEditarPersona.getBtnConfirmar().addActionListener(p->editarPersona(p));
 			this.ventanaAgregarLocalidad.getBtnConfirmar().addActionListener(c->guardarLocalidad(c));
 			this.ventanaAgregarCategoria.getBtnConfirmar().addActionListener(c->guardarCategoria(c));
 			
@@ -62,18 +63,21 @@ public class Controlador implements ActionListener
 			this.categorias_en_tabla = null;
 		}
 		
-		private void ventanaAgregarPersona(ActionEvent a) {
+		private void ventanaAgregarPersona(ActionEvent a)
+		{
 			this.llenarComboBox();
 			this.ventanaAgregarPersona.mostrarVentana();
 		}
 		
-		private void guardarPersona(ActionEvent p) {
+		private void guardarPersona(ActionEvent p)
+		{
 			this.agenda.agregarPersona(addPersona());
 			this.llenarTablaPersonas();
 			this.ventanaAgregarPersona.cerrar();
 		}
 		
-		private PersonaDTO addPersona() {
+		private PersonaDTO addPersona()
+		{
 			PersonaDTO nuevaPersona = new PersonaDTO(0,
 					this.ventanaAgregarPersona.getTxtNombre().getText(),
 					this.ventanaAgregarPersona.getTxtTelefono().getText(),
@@ -89,10 +93,34 @@ public class Controlador implements ActionListener
 			return nuevaPersona;
 		}
 		
-		private void editarPersona(ActionEvent e) {
+		private void ventanaEditarPersona(ActionEvent e) {
 			this.llenarComboBox();
 			this.llenarCampos(this.personas_en_tabla.get(this.vista.getTablaPersonas().getSelectedRow()));
 			this.ventanaEditarPersona.mostrarVentana();
+		}
+		
+		private void editarPersona(ActionEvent p)
+		{
+			this.agenda.editarPersona(editPersona());
+			this.llenarTablaPersonas();
+			this.ventanaEditarPersona.cerrar();
+		}
+		
+		private PersonaDTO editPersona()
+		{
+			PersonaDTO personaEditada = new PersonaDTO(0,
+					this.ventanaEditarPersona.getTxtNombre().getText(),
+					this.ventanaEditarPersona.getTxtTelefono().getText(),
+					this.ventanaEditarPersona.getTxtEmail().getText(),
+	                this.ventanaEditarPersona.getTxtCumpleaños().getText(),
+					this.ventanaEditarPersona.getTxtCalle().getText(),
+					this.ventanaEditarPersona.getTxtAltura().getText(),
+					this.ventanaEditarPersona.getTxtPiso().getText(),
+					this.ventanaEditarPersona.getTxtDpto().getText(),
+					this.ventanaEditarPersona.getTxtLocalidad(),
+					this.ventanaEditarPersona.getTxtCategoria());
+						
+			return personaEditada;
 		}
 		
 		private void llenarCampos(PersonaDTO personaDTO) {
