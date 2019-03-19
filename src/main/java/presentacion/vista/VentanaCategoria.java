@@ -1,49 +1,53 @@
 package presentacion.vista;
 
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-import javax.swing.JScrollPane;
-import javax.swing.JPanel;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
 import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
 
-import persistencia.conexion.Conexion;
 
-public class VentanaCategoria
+public class VentanaCategoria extends JFrame 
 {
-	private JFrame frmAgenda;
+	private static final long serialVersionUID = 1L;
+	private JPanel contentPane;
 	private JTable tablaCategoria;
 	private JButton btnAgregar;
+	private JButton btnEditar;
 	private JButton btnBorrar;
 	private DefaultTableModel modelCategoria;
-	private String[] nombreColumnas = {"Categorias de contactos"};
-
-	public VentanaCategoria() 
+	private String[] nombreColumnas = {"Categoria"};
+	private static VentanaCategoria INSTANCE;
+	
+	public static VentanaCategoria getInstance()
 	{
-		super();
-		initialize();
+		if(INSTANCE == null)
+			return new VentanaCategoria();
+		else
+			return INSTANCE;
 	}
 
-
-	private void initialize() 
+	private VentanaCategoria() 
 	{
-		frmAgenda = new JFrame();
-		frmAgenda.setTitle("ABM Categoria de contactos");
-		frmAgenda.setBounds(100, 100, 461, 358);
-		frmAgenda.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frmAgenda.getContentPane().setLayout(null);
+		super();
+		setTitle("ABM Categoria");
+		
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setBounds(100, 100, 480, 364);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(0, 0, 445, 319);
-		frmAgenda.getContentPane().add(panel);
+		panel.setBounds(10, 11, 442, 308);
+		contentPane.add(panel);
 		panel.setLayout(null);
 		
 		JScrollPane spCategoria = new JScrollPane();
-		spCategoria.setBounds(10, 11, 323, 297);
+		spCategoria.setBounds(0, 0, 323, 297);
 		panel.add(spCategoria);
 		
 		modelCategoria = new DefaultTableModel(null,nombreColumnas);
@@ -51,7 +55,7 @@ public class VentanaCategoria
 			new Object[][] {
 			},
 			new String[] {
-				"Categorias de contactos"
+				"Categoria"
 			}
 		));
 		
@@ -61,38 +65,30 @@ public class VentanaCategoria
 		btnAgregar.setBounds(343, 11, 89, 23);
 		panel.add(btnAgregar);
 		
-		JButton btnEditar = new JButton("Editar");
+		btnEditar = new JButton("Editar");
 		btnEditar.setBounds(343, 45, 89, 23);
 		panel.add(btnEditar);
 		
 		btnBorrar = new JButton("Borrar");
 		btnBorrar.setBounds(343, 79, 89, 23);
 		panel.add(btnBorrar);
+		
+		this.setVisible(false);
 	}
 	
-	public void show()
+	public void mostrarVentana()
 	{
-		this.frmAgenda.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-		this.frmAgenda.addWindowListener(new WindowAdapter() 
-		{
-			@Override
-		    public void windowClosing(WindowEvent e) {
-		        int confirm = JOptionPane.showOptionDialog(
-		             null, "Estas seguro que quieres salir de la Agenda!?", 
-		             "Confirmacion", JOptionPane.YES_NO_OPTION,
-		             JOptionPane.QUESTION_MESSAGE, null, null, null);
-		        if (confirm == 0) {
-		        	//Conexion.getConexion().cerrarConexion();
-		           System.exit(0);
-		        }
-		    }
-		});
-		this.frmAgenda.setVisible(true);
+		this.setVisible(true);
 	}
-	
+
 	public JButton getBtnAgregar() 
 	{
 		return btnAgregar;
+	}
+	
+	public JButton getBtnEditar()
+	{
+		return btnEditar;
 	}
 
 	public JButton getBtnBorrar() 
@@ -114,4 +110,6 @@ public class VentanaCategoria
 	{
 		return nombreColumnas;
 	}
+
 }
+

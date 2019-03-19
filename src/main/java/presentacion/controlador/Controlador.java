@@ -8,6 +8,8 @@ import presentacion.reportes.ReporteAgenda;
 import presentacion.vista.VentanaAMCategoria;
 import presentacion.vista.VentanaAMLocalidad;
 import presentacion.vista.VentanaAMPersona;
+import presentacion.vista.VentanaCategoria;
+import presentacion.vista.VentanaLocalidad;
 import presentacion.vista.Vista;
 import dto.PersonaDTO;
 
@@ -17,8 +19,10 @@ public class Controlador implements ActionListener
 		private List<PersonaDTO> personas_en_tabla;
 		
 		private VentanaAMPersona ventanaPersona;
-		private VentanaAMLocalidad ventanaLocalidad;
-		private VentanaAMCategoria ventanaCategoria;
+		private VentanaAMLocalidad ventanaAMLocalidad;
+		private VentanaAMCategoria ventanaAMCategoria;
+		private VentanaLocalidad ventanaLocalidad;
+		private VentanaCategoria ventanaCategoria;
 		private Agenda agenda;
 		
 		public Controlador(Vista vista, Agenda agenda)
@@ -28,6 +32,8 @@ public class Controlador implements ActionListener
 			this.vista.getBtnBorrar().addActionListener(s->borrarPersona(s));
 			this.vista.getBtnReporte().addActionListener(r->mostrarReporte(r));
 			this.ventanaPersona = VentanaAMPersona.getInstance();
+			this.ventanaLocalidad = VentanaLocalidad.getInstance();
+			this.ventanaCategoria = VentanaCategoria.getInstance();
 			this.ventanaPersona.getBtnConfirmar().addActionListener(p->guardarPersona(p));
 			this.vista.getBtnLocalidad().addActionListener(l->ventanaLocalidad(l));
 			this.vista.getBtnCategoria().addActionListener(c->ventanaCategoria(c));
@@ -64,6 +70,9 @@ public class Controlador implements ActionListener
 			
 			this.llenarTabla(); 
 		}
+		
+		//private void guardarLocalidad(ActionEvent)
+		
 
 		private PersonaDTO addPersona() {
 			PersonaDTO nuevaPersona = new PersonaDTO(0,
