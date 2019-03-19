@@ -16,13 +16,14 @@ public class LocalidadDAOSQL implements LocalidadDAO{
 	private static final String delete = "DELETE FROM localidad WHERE idLocalidad = ?";
 	private static final String readall = "SELECT * FROM localidad";
 	
-	@Override
 	public boolean insert(LocalidadDTO localidad) {
 		PreparedStatement statement;
 		Conexion conexion = Conexion.getConexion();
 		try 
 		{
 			statement = conexion.getSQLConexion().prepareStatement(insert);
+			System.out.println(localidad.getNombre());
+			System.out.println(localidad.getIdLocalidad());
 			statement.setInt(1, localidad.getIdLocalidad());
 			statement.setString(2, localidad.getNombre());
 			if(statement.executeUpdate() > 0) //Si se ejecut� devuelvo true

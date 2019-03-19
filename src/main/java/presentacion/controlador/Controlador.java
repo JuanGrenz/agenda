@@ -11,6 +11,7 @@ import presentacion.vista.VentanaAMPersona;
 import presentacion.vista.VentanaCategoria;
 import presentacion.vista.VentanaLocalidad;
 import presentacion.vista.Vista;
+import dto.LocalidadDTO;
 import dto.PersonaDTO;
 
 public class Controlador implements ActionListener
@@ -49,6 +50,8 @@ public class Controlador implements ActionListener
 //			this.ventanaCategoria.getBtnBorrar().addActionListener(s->borrarCategoria(s));
 //			this.ventanaCategoria.getBtnEditar().addActionListener(e->editarCategoria(e));
 
+			this.ventanaAMLocalidad.getBtnConfirmar().addActionListener(c->guardarLocalidad(c));
+			
 			this.agenda = agenda;
 			this.personas_en_tabla = null;
 		}
@@ -95,7 +98,11 @@ public class Controlador implements ActionListener
 			this.llenarTabla(); 
 		}
 		
-		//private void guardarLocalidad(ActionEvent)
+		private void guardarLocalidad(ActionEvent c)
+		{
+			this.agenda.agregarLocalidad(addLocalidad());
+			this.ventanaAMLocalidad.cerrar();
+		}
 		
 
 		private PersonaDTO addPersona() {
@@ -109,6 +116,13 @@ public class Controlador implements ActionListener
 					this.ventanaPersona.getTxtPiso().getText(),
 					this.ventanaPersona.getTxtDpto().getText());
 			return nuevaPersona;
+		}
+		
+		private LocalidadDTO addLocalidad()
+		{
+			LocalidadDTO nuevaLocalidad = new LocalidadDTO(0, this.ventanaAMLocalidad.getTxtLocalidad().getText());
+			System.out.println(this.ventanaAMLocalidad.getTxtLocalidad().getText());
+			return nuevaLocalidad;
 		}
 
 		private void mostrarReporte(ActionEvent r) {
