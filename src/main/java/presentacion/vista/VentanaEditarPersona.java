@@ -2,7 +2,8 @@ package presentacion.vista;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -10,8 +11,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
-
 import javax.swing.JComboBox;
+import javax.swing.JFormattedTextField;
 
 
 public class VentanaEditarPersona extends JFrame 
@@ -26,7 +27,8 @@ public class VentanaEditarPersona extends JFrame
 	private JTextField txtPiso;
 	private JTextField txtDpto;
 	private JTextField txtEmail;
-	private JTextField txtCumpleaños;
+	private JFormattedTextField txtCumpleaños;
+	private DateFormat df = new SimpleDateFormat("dd/mm");
 	private JComboBox<String> comboBoxCategoriaContacto;
 	private JButton btnConfirmar;
 	private static VentanaEditarPersona INSTANCE;
@@ -138,10 +140,11 @@ public class VentanaEditarPersona extends JFrame
 		panel.add(txtEmail);
 		txtEmail.setColumns(10);
 		
-		txtCumpleaños = new JTextField();
+		txtCumpleaños = new JFormattedTextField(df);
 		txtCumpleaños.setBounds(199, 336, 207, 20);
 		panel.add(txtCumpleaños);
 		txtCumpleaños.setColumns(10);
+		esFecha(txtCumpleaños);
 		
 		comboBoxCategoriaContacto = new JComboBox<String>();
 		comboBoxCategoriaContacto.setBounds(199, 377, 207, 20);
@@ -249,6 +252,23 @@ public class VentanaEditarPersona extends JFrame
 						&& (caracter != '.' || campo.getText().contains("."))) {
 					e.consume();
 					JOptionPane.showMessageDialog(null, "Solo se admiten numeros en este campo.");
+				}
+			}
+		});
+	}
+	
+	private void esFecha(JFormattedTextField campo)
+	{
+		campo.addKeyListener(new KeyAdapter()
+		{
+			public void keyTyped(KeyEvent e) {
+				char c = e.getKeyChar();
+				if (!((c >= '0') && (c <= '9') ||
+						(c == KeyEvent.VK_BACK_SPACE) ||
+						(c == KeyEvent.VK_DELETE) || (c == KeyEvent.VK_SLASH)))        
+				{
+					JOptionPane.showMessageDialog(null, "Ingrese una fecha con el formato dd/mm");
+					e.consume();
 				}
 			}
 		});
