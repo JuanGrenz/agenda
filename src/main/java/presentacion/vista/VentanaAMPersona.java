@@ -6,6 +6,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+
 import javax.swing.JComboBox;
 
 
@@ -103,7 +104,7 @@ public class VentanaAMPersona extends JFrame
 		
 		comboBoxLocalidad = new JComboBox<String>();
 		comboBoxLocalidad.setBounds(199, 90, 207, 20);
-		panel.add(comboBoxLocalidad);
+		panel.add(comboBoxLocalidad);		
 		
 		txtCalle = new JTextField();
 		txtCalle.setColumns(10);
@@ -206,6 +207,14 @@ public class VentanaAMPersona extends JFrame
 	public JButton getBtnConfirmar() 
 	{
 		return btnConfirmar;
+	}
+	
+	public JComboBox<String> getComboBoxLocalidad() {
+		return comboBoxLocalidad;
+	}
+
+	public JComboBox<String> getComboBoxCategoriaContacto() {
+		return comboBoxCategoriaContacto;
 	}
 
 	public void cerrar()

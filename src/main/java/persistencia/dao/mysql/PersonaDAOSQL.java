@@ -28,12 +28,12 @@ public class PersonaDAOSQL implements PersonaDAO
 			statement.setString(3, persona.getTelefono());
 			statement.setString(4, persona.getEmail());
 			statement.setString(5, persona.getCumpleaños());
-			statement.setString(6, persona.getLocalidad().getNombre());
-			statement.setString(7, persona.getCalle());
-			statement.setString(8, persona.getAltura());
-			statement.setString(9, persona.getPiso());
-			statement.setString(10, persona.getDpto());
-			statement.setString(11, persona.getCategoria().getNombre());
+			statement.setString(6, persona.getCalle());
+			statement.setString(7, persona.getAltura());
+			statement.setString(8, persona.getPiso());
+			statement.setString(9, persona.getDpto());
+			statement.setString(10, persona.getLocalidad());
+			statement.setString(11, persona.getCategoria());
 			if(statement.executeUpdate() > 0) //Si se ejecut� devuelvo true
 				return true;
 		} 
@@ -86,7 +86,10 @@ public class PersonaDAOSQL implements PersonaDAO
 						resultSet.getString("Calle"),
 						resultSet.getString("Altura"),
 						resultSet.getString("Piso"),
-						resultSet.getString("Dpto")
+						resultSet.getString("Dpto"),
+						resultSet.getString("Localidad"),
+						resultSet.getString("Categoria")
+						
 						));
 			}
 		} 

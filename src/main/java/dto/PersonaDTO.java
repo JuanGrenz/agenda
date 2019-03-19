@@ -12,11 +12,12 @@ public class PersonaDTO
 	private String piso;  
 	private String dpto;
 	
-	private CategoriaDTO categoria;
-	private LocalidadDTO localidad;
+	private String categoria;
+	private String localidad;
 
 	public PersonaDTO(int idPersona, String nombre, String telefono, String email, 
-						String cumpleaños,String calle, String altura, String piso, String dpto)
+						String cumpleaños,String calle, String altura, String piso,
+						String dpto, String localidad, String categoria)
 	{
 		this.idPersona = idPersona;
 		this.nombre = nombre;
@@ -27,6 +28,8 @@ public class PersonaDTO
 		this.altura = altura;
 		this.piso = piso;
 		this.dpto = dpto;
+		this.categoria = categoria;
+		this.localidad = localidad;
 	}
 	
 	public int getIdPersona() 
@@ -102,19 +105,18 @@ public class PersonaDTO
 		this.dpto = dpto;
 	}
 
-	public CategoriaDTO getCategoria() {
+	public String getCategoria() {
 		return categoria;
 	}
-	
-	public LocalidadDTO getLocalidad() {
+	public void setCategoria(String categoria) {
+		this.categoria = categoria;
+	}
+
+	public void setLocalidad(String localidad) {
+		this.localidad = localidad;
+	}
+	public String getLocalidad() {
 		return localidad;
 	}
 	
-	public void agregarCategoria(CategoriaDTO categoria) {
-		this.categoria = categoria;
-	}
-	
-	public void agregarLocalidad(LocalidadDTO localidad) {
-		this.localidad = localidad;
-	}
 }
