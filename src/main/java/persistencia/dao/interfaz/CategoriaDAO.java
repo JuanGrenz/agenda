@@ -6,9 +6,9 @@ import dto.CategoriaDTO;
 
 public interface CategoriaDAO {
 
-	public boolean insert(CategoriaDTO persona);
+	public boolean insert(CategoriaDTO categoria);
 
-	public boolean delete(CategoriaDTO persona_a_eliminar);
+	public boolean delete(CategoriaDTO categoria_a_eliminar);
 	
 	public List<CategoriaDTO> readAll();
 }

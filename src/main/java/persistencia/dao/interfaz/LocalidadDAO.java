@@ -6,9 +6,9 @@ import dto.LocalidadDTO;
 
 public interface LocalidadDAO {
 
-	public boolean insert(LocalidadDTO persona);
+	public boolean insert(LocalidadDTO localidad);
 
-	public boolean delete(LocalidadDTO persona_a_eliminar);
+	public boolean delete(LocalidadDTO localidad_a_eliminar);
 	
 	public List<LocalidadDTO> readAll();
 }
