@@ -240,7 +240,7 @@ public class VentanaEditarPersona extends JFrame
 	}
 	
 	public boolean verificarCampo() {
-		if (txtNombre.getText().isEmpty() || txtTelefono.getText().isEmpty()) {
+		if (txtNombre.getText().isEmpty() || txtTelefono.getText().isEmpty() || txtEmail.getText().isEmpty()) {
 			JOptionPane.showMessageDialog(null, "Los campos nombre y numero telefono no pueden estar vacios.");
 			return false;
 		}
