@@ -13,6 +13,7 @@ import presentacion.vista.VentanaEditarCategoria;
 import presentacion.vista.VentanaEditarLocalidad;
 import presentacion.vista.VentanaEditarPersona;
 import presentacion.vista.VentanaLocalidad;
+import presentacion.vista.VentanaMensajeError;
 import presentacion.vista.Vista;
 import dto.CategoriaDTO;
 import dto.LocalidadDTO;
@@ -33,6 +34,7 @@ public class Controlador implements ActionListener
 		private VentanaEditarCategoria ventanaEditarCategoria;
 		private VentanaLocalidad ventanaLocalidad;
 		private VentanaCategoria ventanaCategoria;
+		private VentanaMensajeError ventanaError;
 		private Agenda agenda;
 		private int id;
 		
@@ -47,6 +49,7 @@ public class Controlador implements ActionListener
 			this.ventanaEditarLocalidad = VentanaEditarLocalidad.getInstance();
 			this.ventanaAgregarCategoria = VentanaAgregarCategoria.getInstance();
 			this.ventanaEditarCategoria = VentanaEditarCategoria.getInstance();
+			this.ventanaError = VentanaMensajeError.getInstance();
 			
 			this.vista.getBtnAgregar().addActionListener(a->ventanaAgregarPersona(a));
 			this.vista.getBtnBorrar().addActionListener(s->borrarPersona(s));
@@ -82,20 +85,28 @@ public class Controlador implements ActionListener
 		
 		private void guardarPersona(ActionEvent p)
 		{
-			this.agenda.agregarPersona(addPersona());
-			this.llenarTablaPersonas();
-			this.ventanaAgregarPersona.cerrar();
+			if (this.ventanaAgregarPersona.verificarCampo()) {
+				try {
+					this.agenda.agregarPersona(addPersona());
+					this.llenarTablaPersonas();
+					this.ventanaAgregarPersona.cerrar();
+				}
+				catch(NullPointerException ex) {
+					this.ventanaError.mostrarVentana();
+					this.ventanaError.getError().setText("Seleccione una fecha de cumpleaños");
+				}
+			}
 		}
 		
 		private PersonaDTO addPersona()
 		{
-			java.sql.Date cumpleaños = new java.sql.Date(this.ventanaAgregarPersona.getTxtCumpleaños().getDate().getTime());
+//			java.sql.Date cumpleaños = new java.sql.Date(this.ventanaAgregarPersona.getTxtCumpleaños().getDate().getTime());
 			
 			PersonaDTO nuevaPersona = new PersonaDTO(0,
 					this.ventanaAgregarPersona.getTxtNombre().getText(),
 					this.ventanaAgregarPersona.getTxtTelefono().getText(),
 					this.ventanaAgregarPersona.getTxtEmail().getText(),
-                    cumpleaños,
+					new java.sql.Date(this.ventanaAgregarPersona.getTxtCumpleaños().getDate().getTime()),
 					this.ventanaAgregarPersona.getTxtCalle().getText(),
 					this.ventanaAgregarPersona.getTxtAltura().getText(),
 					this.ventanaAgregarPersona.getTxtPiso().getText(),
@@ -107,17 +118,25 @@ public class Controlador implements ActionListener
 		}
 		
 		private void ventanaEditarPersona(ActionEvent e) {
-			this.llenarComboBox();
-			this.llenarCampos(this.personas_en_tabla.get(this.vista.getTablaPersonas().getSelectedRow()));
-			id = this.personas_en_tabla.get(this.vista.getTablaPersonas().getSelectedRow()).getIdPersona();
-			this.ventanaEditarPersona.mostrarVentana();
+			try {
+				this.llenarComboBox();
+				this.llenarCampos(this.personas_en_tabla.get(this.vista.getTablaPersonas().getSelectedRow()));
+				id = this.personas_en_tabla.get(this.vista.getTablaPersonas().getSelectedRow()).getIdPersona();
+				this.ventanaEditarPersona.mostrarVentana();
+			}
+			catch(ArrayIndexOutOfBoundsException ex) {
+				this.ventanaError.mostrarVentana();
+				this.ventanaError.getError().setText("Seleccione una persona para editar.");
+			}
 		}
 		
 		private void editarPersona(ActionEvent p)
 		{
-			this.agenda.editarPersona(editPersona());
-			this.llenarTablaPersonas();
-			this.ventanaEditarPersona.cerrar();
+			if(this.ventanaEditarPersona.verificarCampo()) {
+				this.agenda.editarPersona(editPersona());
+				this.llenarTablaPersonas();
+				this.ventanaEditarPersona.cerrar();
+			}
 		}
 		
 		private PersonaDTO editPersona()
@@ -174,10 +193,12 @@ public class Controlador implements ActionListener
 		
 		private void guardarLocalidad(ActionEvent c)
 		{
-			this.agenda.agregarLocalidad(addLocalidad());
-			this.llenarComboBox();
-			this.llenarTablaLocalidades();
-			this.ventanaAgregarLocalidad.cerrar();
+			if(this.ventanaAgregarLocalidad.verificarCampo()) {
+				this.agenda.agregarLocalidad(addLocalidad());
+				this.llenarComboBox();
+				this.llenarTablaLocalidades();
+				this.ventanaAgregarLocalidad.cerrar();
+			}
 		}
 		
 		private LocalidadDTO addLocalidad()
@@ -199,19 +220,27 @@ public class Controlador implements ActionListener
 		
 		public void ventanaEditarLocalidad(ActionEvent l)
 		{
-			LocalidadDTO localidad = this.localidades_en_tabla.get(this.ventanaLocalidad.getTablaLocalidad().getSelectedRow());
-			
-			this.ventanaEditarLocalidad.getTxtLocalidad().setText(localidad.getNombre());
-			id = localidad.getIdLocalidad();
-			this.ventanaEditarLocalidad.mostrarVentana();	
+			try {
+				LocalidadDTO localidad = this.localidades_en_tabla.get(this.ventanaLocalidad.getTablaLocalidad().getSelectedRow());
+				
+				this.ventanaEditarLocalidad.getTxtLocalidad().setText(localidad.getNombre());
+				id = localidad.getIdLocalidad();
+				this.ventanaEditarLocalidad.mostrarVentana();
+			}
+			catch(ArrayIndexOutOfBoundsException ex) {
+				this.ventanaError.mostrarVentana();
+				this.ventanaError.getError().setText("Seleccione una localidad para editar.");
+			}
 		}
 		
 		private void editarLocalidad(ActionEvent p)
 		{
-			this.agenda.editarLocalidad(editLocalidad());
-			this.llenarTablaLocalidades();
-			this.llenarTablaPersonas(); 
-			this.ventanaEditarLocalidad.cerrar();
+			if (this.ventanaEditarLocalidad.verificarCampo()) {
+				this.agenda.editarLocalidad(editLocalidad());
+				this.llenarTablaLocalidades();
+				this.llenarTablaPersonas(); 
+				this.ventanaEditarLocalidad.cerrar();
+			}
 		}
 		
 		private LocalidadDTO editLocalidad()
@@ -224,27 +253,35 @@ public class Controlador implements ActionListener
 		
 		public void ventanaEditarCategoria(ActionEvent l)
 		{
+			try {
 			CategoriaDTO categoria = this.categorias_en_tabla.get(this.ventanaCategoria.getTablaCategoria().getSelectedRow());
 			
 			this.ventanaEditarCategoria.getTxtCategoria().setText(categoria.getNombre());
 			id = categoria.getIdCategoria();
-			this.ventanaEditarCategoria.mostrarVentana();	
+			this.ventanaEditarCategoria.mostrarVentana();
+			}
+			catch(ArrayIndexOutOfBoundsException ex) {
+				this.ventanaError.mostrarVentana();
+				this.ventanaError.getError().setText("Seleccione una categoria para editar.");
+			}
 		}
 		
 		private void editarCategoria(ActionEvent p)
 		{
-			this.agenda.editarCategoria(editCategoria());
-			this.llenarTablaCategorias();
-			this.llenarTablaPersonas(); 
-			this.ventanaEditarCategoria.cerrar();
+			if(this.ventanaEditarCategoria.verificarCampo()) {
+				this.agenda.editarCategoria(editCategoria());
+				this.llenarTablaCategorias();
+				this.llenarTablaPersonas(); 
+				this.ventanaEditarCategoria.cerrar();
+			}
 		}
 		
 		private CategoriaDTO editCategoria()
 		{
-			CategoriaDTO categoriaEditada = new CategoriaDTO(this.id,
-					this.ventanaEditarCategoria.getTxtCategoria().getText());
-						
-			return categoriaEditada;
+				CategoriaDTO categoriaEditada = new CategoriaDTO(this.id,
+						this.ventanaEditarCategoria.getTxtCategoria().getText());
+							
+				return categoriaEditada;
 		}
 		
 		private void ventanaCategoria(ActionEvent c) {
@@ -258,10 +295,12 @@ public class Controlador implements ActionListener
 		
 		private void guardarCategoria(ActionEvent c)
 		{
-			this.agenda.agregarCategoria(addCategoria());
-			this.llenarComboBox();
-			this.llenarTablaCategorias();
-			this.ventanaAgregarCategoria.cerrar();
+			if(this.ventanaAgregarCategoria.verificarCampo()) {
+				this.agenda.agregarCategoria(addCategoria());
+				this.llenarComboBox();
+				this.llenarTablaCategorias();
+				this.ventanaAgregarCategoria.cerrar();
+			}
 		}
 
 		private CategoriaDTO addCategoria()

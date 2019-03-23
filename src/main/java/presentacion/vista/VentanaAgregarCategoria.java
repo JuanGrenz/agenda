@@ -3,6 +3,7 @@ package presentacion.vista;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
@@ -76,5 +77,14 @@ public class VentanaAgregarCategoria extends JFrame
 		this.txtCategoria.setText(null);
 		this.dispose();
 	}
+	
+	public boolean verificarCampo() {
+		if (txtCategoria.getText().isEmpty()) {
+			JOptionPane.showMessageDialog(null, "El campo nombre no puede estar vacio.");
+			return false;
+		}
+		return true;
+	}
+	
 }
 

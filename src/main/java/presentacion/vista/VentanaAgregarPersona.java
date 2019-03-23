@@ -106,7 +106,7 @@ public class VentanaAgregarPersona extends JFrame
 		txtTelefono.setBounds(199, 49, 207, 20);
 		panel.add(txtTelefono);
 		txtTelefono.setColumns(10);
-		verificarCampo(txtTelefono);
+		esNumero(txtTelefono);
 		
 		comboBoxLocalidad = new JComboBox<String>();
 		comboBoxLocalidad.setBounds(199, 90, 207, 20);
@@ -121,13 +121,13 @@ public class VentanaAgregarPersona extends JFrame
 		txtAltura.setColumns(10);
 		txtAltura.setBounds(199, 172, 207, 20);
 		panel.add(txtAltura);
-		verificarCampo(txtAltura);
+		esNumero(txtAltura);
 		
 		txtPiso = new JTextField();
 		txtPiso.setBounds(199, 213, 207, 20);
 		panel.add(txtPiso);
 		txtPiso.setColumns(10);
-		verificarCampo(txtPiso);
+		esNumero(txtPiso);
 		
 		txtDpto = new JTextField();
 		txtDpto.setBounds(199, 254, 207, 20);
@@ -238,7 +238,15 @@ public class VentanaAgregarPersona extends JFrame
 		this.dispose();
 	}
 	
-	private void verificarCampo(JTextField campo) {
+	public boolean verificarCampo() {
+		if (txtNombre.getText().isEmpty() || txtTelefono.getText().isEmpty()) {
+			JOptionPane.showMessageDialog(null, "Los campos nombre y numero telefono no pueden estar vacios.");
+			return false;
+		}
+		return true;
+	}
+	
+	private void esNumero(JTextField campo) {
 		campo.addKeyListener(new KeyAdapter() 
 		{
 			@Override

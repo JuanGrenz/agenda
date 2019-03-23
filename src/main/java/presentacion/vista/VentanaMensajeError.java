@@ -4,11 +4,14 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import java.awt.Font;
+import javax.swing.SwingConstants;
 
 public class VentanaMensajeError extends JFrame 
 {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
+	private JLabel lblError;
 	private static VentanaMensajeError INSTANCE;
 	
 	public static VentanaMensajeError getInstance()
@@ -36,7 +39,10 @@ public class VentanaMensajeError extends JFrame
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
-		JLabel lblError = new JLabel("");
+		lblError = new JLabel("");
+		lblError.setHorizontalAlignment(SwingConstants.CENTER);
+		lblError.setHorizontalTextPosition(SwingConstants.LEADING);
+		lblError.setFont(new Font("Tahoma", Font.BOLD, 18));
 		lblError.setBounds(10, 14, 361, 76);
 		panel.add(lblError);
 		
@@ -46,6 +52,10 @@ public class VentanaMensajeError extends JFrame
 	public void mostrarVentana()
 	{
 		this.setVisible(true);
+	}
+	
+	public JLabel getError() {
+		return lblError;
 	}
 
 }
