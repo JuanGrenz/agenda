@@ -2,10 +2,6 @@ package presentacion.vista;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -13,8 +9,11 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+
+import com.toedter.calendar.JDateChooser;
+import com.toedter.calendar.JTextFieldDateEditor;
+
 import javax.swing.JComboBox;
-import javax.swing.JFormattedTextField;
 
 
 public class VentanaEditarPersona extends JFrame 
@@ -29,8 +28,7 @@ public class VentanaEditarPersona extends JFrame
 	private JTextField txtPiso;
 	private JTextField txtDpto;
 	private JTextField txtEmail;
-	private JFormattedTextField txtCumpleaños;
-	private DateFormat df = new SimpleDateFormat("dd/mm");
+	private JDateChooser txtCumpleaños;
 	private JComboBox<String> comboBoxCategoriaContacto;
 	private JButton btnConfirmar;
 	private static VentanaEditarPersona INSTANCE;
@@ -142,17 +140,11 @@ public class VentanaEditarPersona extends JFrame
 		panel.add(txtEmail);
 		txtEmail.setColumns(10);
 		
-		txtCumpleaños = new JFormattedTextField(df);
-		txtCumpleaños.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				txtCumpleaños.setToolTipText("Ingrese una fecha con el formato dd/mm");
-			}
-		});
+		txtCumpleaños = new JDateChooser();
+		JTextFieldDateEditor editor = (JTextFieldDateEditor) txtCumpleaños.getDateEditor();
+		editor.setEditable(false);
 		txtCumpleaños.setBounds(199, 336, 207, 20);
 		panel.add(txtCumpleaños);
-		txtCumpleaños.setColumns(10);
-		verificarCampo(txtCumpleaños);
 		
 		comboBoxCategoriaContacto = new JComboBox<String>();
 		comboBoxCategoriaContacto.setBounds(199, 377, 207, 20);
@@ -211,7 +203,7 @@ public class VentanaEditarPersona extends JFrame
 		return txtEmail;
 	}
 	
-	public JTextField getTxtCumpleaños()
+	public JDateChooser getTxtCumpleaños()
 	{
 		return txtCumpleaños;
 	}
@@ -244,7 +236,6 @@ public class VentanaEditarPersona extends JFrame
 		this.txtPiso.setText(null);
 		this.txtDpto.setText(null);
 		this.txtEmail.setText(null);
-		this.txtCumpleaños.setText(null);
 		this.dispose();
 	}
 	

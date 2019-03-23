@@ -83,7 +83,7 @@ public class Controlador implements ActionListener
 					this.ventanaAgregarPersona.getTxtNombre().getText(),
 					this.ventanaAgregarPersona.getTxtTelefono().getText(),
 					this.ventanaAgregarPersona.getTxtEmail().getText(),
-                    this.ventanaAgregarPersona.getTxtCumpleaños().getText(),
+                    this.ventanaAgregarPersona.getTxtCumpleaños().getDate(),
 					this.ventanaAgregarPersona.getTxtCalle().getText(),
 					this.ventanaAgregarPersona.getTxtAltura().getText(),
 					this.ventanaAgregarPersona.getTxtPiso().getText(),
@@ -114,7 +114,7 @@ public class Controlador implements ActionListener
 					this.ventanaEditarPersona.getTxtNombre().getText(),
 					this.ventanaEditarPersona.getTxtTelefono().getText(),
 					this.ventanaEditarPersona.getTxtEmail().getText(),
-	                this.ventanaEditarPersona.getTxtCumpleaños().getText(),
+	                this.ventanaEditarPersona.getTxtCumpleaños().getDate(),
 					this.ventanaEditarPersona.getTxtCalle().getText(),
 					this.ventanaEditarPersona.getTxtAltura().getText(),
 					this.ventanaEditarPersona.getTxtPiso().getText(),
@@ -134,7 +134,7 @@ public class Controlador implements ActionListener
 			this.ventanaEditarPersona.getTxtPiso().setText(personaDTO.getPiso());
 			this.ventanaEditarPersona.getTxtDpto().setText(personaDTO.getDpto());
 			this.ventanaEditarPersona.getTxtEmail().setText(personaDTO.getEmail());
-			this.ventanaEditarPersona.getTxtCumpleaños().setText(personaDTO.getCumpleaños());
+			this.ventanaEditarPersona.getTxtCumpleaños().setDate(personaDTO.getCumpleaños());
 			this.ventanaEditarPersona.getComboBoxCategoriaContacto().setSelectedItem(personaDTO.getCategoria());
 		}
 
