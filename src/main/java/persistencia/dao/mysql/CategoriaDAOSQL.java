@@ -16,6 +16,8 @@ public class CategoriaDAOSQL implements CategoriaDAO{
 	private static final String delete = "DELETE FROM categoria WHERE idCategoria = ?";
 	private static final String readall = "SELECT * FROM categoria";
 	
+	private static final String update = "UPDATE categoria SET nombre = ? WHERE idCategoria = ?";
+	
 	@Override
 	public boolean insert(CategoriaDTO categoria) {
 		PreparedStatement statement;
@@ -79,6 +81,26 @@ public class CategoriaDAOSQL implements CategoriaDAO{
 			e.printStackTrace();
 		}
 		return categorias;
+	}
+	
+	public boolean update(CategoriaDTO categoria)
+	{
+		PreparedStatement statement;
+		Conexion conexion = Conexion.getConexion();
+		try 
+		{
+			statement = conexion.getSQLConexion().prepareStatement(update);
+			statement.setString(1, categoria.getNombre());
+			
+			if(statement.executeUpdate() > 0) //Si se ejecut� devuelvo true
+				return true;
+			} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+		
+		return false;
 	}
 
 }

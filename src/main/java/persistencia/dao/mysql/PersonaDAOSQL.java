@@ -104,7 +104,6 @@ public class PersonaDAOSQL implements PersonaDAO
 
 	public boolean update(PersonaDTO persona)
 	{
-		System.out.println(persona.getIdPersona());
 		PreparedStatement statement;
 		Conexion conexion = Conexion.getConexion();
 		try 
