@@ -25,17 +25,18 @@ public class VentanaMensajeError extends JFrame
 	private VentanaMensajeError() 
 	{
 		super();
-		setTitle("ERROR!!!");
+		setResizable(false);
+		setTitle("ERROR 404");
 		
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 397, 140);
+		setBounds(100, 100, 430, 140);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(0, 0, 381, 101);
+		panel.setBounds(0, 0, 424, 112);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
@@ -43,7 +44,7 @@ public class VentanaMensajeError extends JFrame
 		lblError.setHorizontalAlignment(SwingConstants.CENTER);
 		lblError.setHorizontalTextPosition(SwingConstants.LEADING);
 		lblError.setFont(new Font("Tahoma", Font.BOLD, 18));
-		lblError.setBounds(10, 14, 361, 76);
+		lblError.setBounds(10, 14, 404, 87);
 		panel.add(lblError);
 		
 		this.setVisible(false);

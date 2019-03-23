@@ -3,6 +3,8 @@ package presentacion.controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
+
+
 import modelo.Agenda;
 import presentacion.reportes.ReporteAgenda;
 import presentacion.vista.VentanaAgregarCategoria;
@@ -212,9 +214,8 @@ public class Controlador implements ActionListener
 			int[] filas_seleccionadas = this.ventanaLocalidad.getTablaLocalidad().getSelectedRows();
 			for (int fila:filas_seleccionadas)
 			{
-				this.agenda.borrarLocalidad(this.localidades_en_tabla.get(fila));
-			}
-			
+			this.agenda.borrarLocalidad(this.localidades_en_tabla.get(fila));
+			}	
 			this.llenarTablaLocalidades(); 
 		}
 		

@@ -9,8 +9,11 @@ import java.util.List;
 import dto.CategoriaDTO;
 import persistencia.conexion.Conexion;
 import persistencia.dao.interfaz.CategoriaDAO;
+import presentacion.vista.VentanaMensajeError;
 
 public class CategoriaDAOSQL implements CategoriaDAO{
+	
+	private VentanaMensajeError VME = VentanaMensajeError.getInstance();
 
 	private static final String insert = "INSERT INTO categoria(idCategoria, nombre) VALUES(?, ?)";
 	private static final String delete = "DELETE FROM categoria WHERE idCategoria = ?";
@@ -53,7 +56,8 @@ public class CategoriaDAOSQL implements CategoriaDAO{
 		} 
 		catch (SQLException e) 
 		{
-			e.printStackTrace();
+			VME.getError().setText("No se puede borrar una categoria en uso.");
+			VME.mostrarVentana();
 		}
 		return false;
 	}

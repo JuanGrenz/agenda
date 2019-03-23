@@ -9,8 +9,11 @@ import java.util.List;
 import dto.LocalidadDTO;
 import persistencia.conexion.Conexion;
 import persistencia.dao.interfaz.LocalidadDAO;
+import presentacion.vista.VentanaMensajeError;
 
 public class LocalidadDAOSQL implements LocalidadDAO{
+	
+	private VentanaMensajeError VME = VentanaMensajeError.getInstance();
 
 	private static final String insert = "INSERT INTO localidad(idLocalidad, nombre) VALUES(?, ?)";
 	private static final String delete = "DELETE FROM localidad WHERE idLocalidad = ?";
@@ -52,7 +55,8 @@ public class LocalidadDAOSQL implements LocalidadDAO{
 		} 
 		catch (SQLException e) 
 		{
-			e.printStackTrace();
+			VME.getError().setText("No puede borrar una localidad en uso.");
+			VME.mostrarVentana();
 		}
 		return false;
 	}
