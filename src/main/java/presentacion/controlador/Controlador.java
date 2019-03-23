@@ -64,7 +64,9 @@ public class Controlador implements ActionListener
 			this.ventanaAgregarPersona.getBtnConfirmar().addActionListener(p->guardarPersona(p));
 			this.ventanaEditarPersona.getBtnConfirmar().addActionListener(p->editarPersona(p));
 			this.ventanaAgregarLocalidad.getBtnConfirmar().addActionListener(c->guardarLocalidad(c));
+			this.ventanaEditarLocalidad.getBtnConfirmar().addActionListener(p->editarLocalidad(p));
 			this.ventanaAgregarCategoria.getBtnConfirmar().addActionListener(c->guardarCategoria(c));
+			this.ventanaEditarCategoria.getBtnConfirmar().addActionListener(p->editarCategoria(p));
 			
 			this.agenda = agenda;
 			this.personas_en_tabla = null;
@@ -201,7 +203,48 @@ public class Controlador implements ActionListener
 			
 			this.ventanaEditarLocalidad.getTxtLocalidad().setText(localidad.getNombre());
 			id = localidad.getIdLocalidad();
-			this.ventanaEditarPersona.mostrarVentana();	
+			this.ventanaEditarLocalidad.mostrarVentana();	
+		}
+		
+		private void editarLocalidad(ActionEvent p)
+		{
+			this.agenda.editarLocalidad(editLocalidad());
+			this.llenarTablaLocalidades();
+			this.llenarTablaPersonas(); 
+			this.ventanaEditarLocalidad.cerrar();
+		}
+		
+		private LocalidadDTO editLocalidad()
+		{
+			LocalidadDTO localidadEditada = new LocalidadDTO(this.id,
+					this.ventanaEditarLocalidad.getTxtLocalidad().getText());
+						
+			return localidadEditada;
+		}
+		
+		public void ventanaEditarCategoria(ActionEvent l)
+		{
+			CategoriaDTO categoria = this.categorias_en_tabla.get(this.ventanaCategoria.getTablaCategoria().getSelectedRow());
+			
+			this.ventanaEditarCategoria.getTxtCategoria().setText(categoria.getNombre());
+			id = categoria.getIdCategoria();
+			this.ventanaEditarCategoria.mostrarVentana();	
+		}
+		
+		private void editarCategoria(ActionEvent p)
+		{
+			this.agenda.editarCategoria(editCategoria());
+			this.llenarTablaCategorias();
+			this.llenarTablaPersonas(); 
+			this.ventanaEditarCategoria.cerrar();
+		}
+		
+		private CategoriaDTO editCategoria()
+		{
+			CategoriaDTO categoriaEditada = new CategoriaDTO(this.id,
+					this.ventanaEditarCategoria.getTxtCategoria().getText());
+						
+			return categoriaEditada;
 		}
 		
 		private void ventanaCategoria(ActionEvent c) {

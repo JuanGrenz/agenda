@@ -64,7 +64,7 @@ public class VentanaLocalidad extends JFrame
 		panel.add(btnBorrar);
 		
 		btnEditar = new JButton("Editar");
-		btnEditar.setBounds(333, 79, 99, 23);
+		btnEditar.setBounds(333, 71, 99, 23);
 		panel.add(btnEditar);
 		
 		this.setVisible(false);
