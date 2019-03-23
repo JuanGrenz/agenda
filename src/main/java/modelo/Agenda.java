@@ -48,6 +48,11 @@ public class Agenda
 	{
 		this.categoria.insert(nuevaCategoria);
 	}
+	
+	public void editarCategoria(CategoriaDTO categoria_a_editar)
+	{
+		this.categoria.update(categoria_a_editar);
+	}
 
 	public void borrarCategoria(CategoriaDTO categoria_a_eliminar) 
 	{
@@ -62,6 +67,11 @@ public class Agenda
 	public void agregarLocalidad(LocalidadDTO nuevaLocalidad)
 	{
 		this.localidad.insert(nuevaLocalidad);
+	}
+	
+	public void editarLocalidad(LocalidadDTO localidad_a_editar)
+	{
+		this.localidad.update(localidad_a_editar);
 	}
 
 	public void borrarLocalidad(LocalidadDTO localidad_a_eliminar) 

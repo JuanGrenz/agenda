@@ -11,4 +11,6 @@ public interface CategoriaDAO {
 	public boolean delete(CategoriaDTO categoria_a_eliminar);
 	
 	public List<CategoriaDTO> readAll();
+
+	public boolean update(CategoriaDTO categoria_a_editar);
 }
