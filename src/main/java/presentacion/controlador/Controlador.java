@@ -79,11 +79,13 @@ public class Controlador implements ActionListener
 		
 		private PersonaDTO addPersona()
 		{
+			java.sql.Date cumpleaños = new java.sql.Date(this.ventanaAgregarPersona.getTxtCumpleaños().getDate().getTime());
+			
 			PersonaDTO nuevaPersona = new PersonaDTO(0,
 					this.ventanaAgregarPersona.getTxtNombre().getText(),
 					this.ventanaAgregarPersona.getTxtTelefono().getText(),
 					this.ventanaAgregarPersona.getTxtEmail().getText(),
-                    this.ventanaAgregarPersona.getTxtCumpleaños().getDate(),
+                    cumpleaños,
 					this.ventanaAgregarPersona.getTxtCalle().getText(),
 					this.ventanaAgregarPersona.getTxtAltura().getText(),
 					this.ventanaAgregarPersona.getTxtPiso().getText(),
@@ -110,11 +112,13 @@ public class Controlador implements ActionListener
 		
 		private PersonaDTO editPersona()
 		{
+			java.sql.Date cumpleaños = new java.sql.Date(this.ventanaAgregarPersona.getTxtCumpleaños().getDate().getTime());
+			
 			PersonaDTO personaEditada = new PersonaDTO(this.id,
 					this.ventanaEditarPersona.getTxtNombre().getText(),
 					this.ventanaEditarPersona.getTxtTelefono().getText(),
 					this.ventanaEditarPersona.getTxtEmail().getText(),
-	                this.ventanaEditarPersona.getTxtCumpleaños().getDate(),
+					cumpleaños,
 					this.ventanaEditarPersona.getTxtCalle().getText(),
 					this.ventanaEditarPersona.getTxtAltura().getText(),
 					this.ventanaEditarPersona.getTxtPiso().getText(),
