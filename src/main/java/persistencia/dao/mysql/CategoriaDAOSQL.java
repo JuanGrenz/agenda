@@ -91,6 +91,7 @@ public class CategoriaDAOSQL implements CategoriaDAO{
 		{
 			statement = conexion.getSQLConexion().prepareStatement(update);
 			statement.setString(1, categoria.getNombre());
+			statement.setInt(2, categoria.getIdCategoria());
 			
 			if(statement.executeUpdate() > 0) //Si se ejecut� devuelvo true
 				return true;

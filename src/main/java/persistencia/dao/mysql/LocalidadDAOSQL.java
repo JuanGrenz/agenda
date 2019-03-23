@@ -90,6 +90,7 @@ public class LocalidadDAOSQL implements LocalidadDAO{
 		{
 			statement = conexion.getSQLConexion().prepareStatement(update);
 			statement.setString(1, localidad.getNombre());
+			statement.setInt(2, localidad.getIdLocalidad());
 			
 			if(statement.executeUpdate() > 0) //Si se ejecut� devuelvo true
 				return true;
