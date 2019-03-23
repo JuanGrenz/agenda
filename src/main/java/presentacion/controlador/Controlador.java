@@ -9,6 +9,8 @@ import presentacion.vista.VentanaAgregarCategoria;
 import presentacion.vista.VentanaAgregarLocalidad;
 import presentacion.vista.VentanaAgregarPersona;
 import presentacion.vista.VentanaCategoria;
+import presentacion.vista.VentanaEditarCategoria;
+import presentacion.vista.VentanaEditarLocalidad;
 import presentacion.vista.VentanaEditarPersona;
 import presentacion.vista.VentanaLocalidad;
 import presentacion.vista.Vista;
@@ -26,7 +28,9 @@ public class Controlador implements ActionListener
 		private VentanaAgregarPersona ventanaAgregarPersona;
 		private VentanaEditarPersona ventanaEditarPersona;
 		private VentanaAgregarLocalidad ventanaAgregarLocalidad;
+		private VentanaEditarLocalidad ventanaEditarLocalidad;
 		private VentanaAgregarCategoria ventanaAgregarCategoria;
+		private VentanaEditarCategoria ventanaEditarCategoria;
 		private VentanaLocalidad ventanaLocalidad;
 		private VentanaCategoria ventanaCategoria;
 		private Agenda agenda;
@@ -40,7 +44,9 @@ public class Controlador implements ActionListener
 			this.ventanaCategoria = VentanaCategoria.getInstance();
 			this.ventanaEditarPersona = VentanaEditarPersona.getInstance();
 			this.ventanaAgregarLocalidad = VentanaAgregarLocalidad.getInstance();
+			this.ventanaEditarLocalidad = VentanaEditarLocalidad.getInstance();
 			this.ventanaAgregarCategoria = VentanaAgregarCategoria.getInstance();
+			this.ventanaEditarCategoria = VentanaEditarCategoria.getInstance();
 			
 			this.vista.getBtnAgregar().addActionListener(a->ventanaAgregarPersona(a));
 			this.vista.getBtnBorrar().addActionListener(s->borrarPersona(s));
@@ -50,8 +56,10 @@ public class Controlador implements ActionListener
 			this.vista.getBtnCategoria().addActionListener(c->ventanaCategoria(c));		
 			this.ventanaLocalidad.getBtnAgregar().addActionListener(a->ventanaAgregarLocalidad(a));
 			this.ventanaLocalidad.getBtnBorrar().addActionListener(s->borrarLocalidad(s));
+			this.ventanaLocalidad.getBtnEditar().addActionListener(l->ventanaEditarLocalidad(l));
 			this.ventanaCategoria.getBtnAgregar().addActionListener(a->ventanaAgregarCategoria(a));
 			this.ventanaCategoria.getBtnBorrar().addActionListener(s->borrarCategoria(s));
+			this.ventanaCategoria.getBtnEditar().addActionListener(l->ventanaEditarCategoria(l));
 
 			this.ventanaAgregarPersona.getBtnConfirmar().addActionListener(p->guardarPersona(p));
 			this.ventanaEditarPersona.getBtnConfirmar().addActionListener(p->editarPersona(p));
@@ -185,6 +193,15 @@ public class Controlador implements ActionListener
 			}
 			
 			this.llenarTablaLocalidades(); 
+		}
+		
+		public void ventanaEditarLocalidad(ActionEvent l)
+		{
+			LocalidadDTO localidad = this.localidades_en_tabla.get(this.ventanaLocalidad.getTablaLocalidad().getSelectedRow());
+			
+			this.ventanaEditarLocalidad.getTxtLocalidad().setText(localidad.getNombre());
+			id = localidad.getIdLocalidad();
+			this.ventanaEditarPersona.mostrarVentana();	
 		}
 		
 		private void ventanaCategoria(ActionEvent c) {

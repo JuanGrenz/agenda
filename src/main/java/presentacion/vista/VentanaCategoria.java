@@ -16,6 +16,7 @@ public class VentanaCategoria extends JFrame
 	private JTable tablaCategoria;
 	private JButton btnAgregar;
 	private JButton btnBorrar;
+	private JButton btnEditar;
 	private DefaultTableModel modelCategoria;
 	private String[] nombreColumnas = {"Categoria"};
 	private static VentanaCategoria INSTANCE;
@@ -62,6 +63,10 @@ public class VentanaCategoria extends JFrame
 		btnBorrar.setBounds(333, 41, 99, 23);
 		panel.add(btnBorrar);
 		
+		btnEditar = new JButton("Editar");
+		btnEditar.setBounds(333, 79, 99, 23);
+		panel.add(btnEditar);
+		
 		this.setVisible(false);
 	}
 	
@@ -78,6 +83,11 @@ public class VentanaCategoria extends JFrame
 	public JButton getBtnBorrar() 
 	{
 		return btnBorrar;
+	}
+	
+	public JButton getBtnEditar() 
+	{
+		return btnEditar;
 	}
 
 	public DefaultTableModel getModelCategoria() 
