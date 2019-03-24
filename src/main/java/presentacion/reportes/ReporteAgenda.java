@@ -2,6 +2,8 @@ package presentacion.reportes;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -28,6 +30,11 @@ public class ReporteAgenda
 	//Recibe la lista de personas para armar el reporte
     public ReporteAgenda(List<PersonaDTO> personas)
     {
+    	Collections.sort(personas, new Comparator<PersonaDTO>() {
+		    public int compare(PersonaDTO one, PersonaDTO other) {
+		        return one.getNombre().compareTo(other.getNombre());
+		    }
+		});
     	//Hardcodeado
 		Map<String, Object> parametersMap = new HashMap<String, Object>();
 		parametersMap.put("Fecha", new SimpleDateFormat("dd/MM/yyyy").format(new Date()));		
