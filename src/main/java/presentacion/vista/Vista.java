@@ -45,7 +45,7 @@ public class Vista
 		panel.setLayout(null);
 		
 		JScrollPane spPersonas = new JScrollPane();
-		spPersonas.setBounds(10, 11, 834, 182);
+		spPersonas.setBounds(10, 11, 834, 263);
 		panel.add(spPersonas);
 		
 		modelPersonas = new DefaultTableModel(null,nombreColumnas);
