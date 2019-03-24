@@ -2,6 +2,9 @@ package presentacion.controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 
@@ -74,7 +77,7 @@ public class Controlador implements ActionListener
 			this.ventanaEditarCategoria.getBtnConfirmar().addActionListener(p->editarCategoria(p));
 			
 			this.agenda = agenda;
-			this.personas_en_tabla = null;
+			this.personas_en_tabla = new ArrayList<PersonaDTO>();
 			this.localidades_en_tabla = null;
 			this.categorias_en_tabla = null;
 		}
@@ -326,6 +329,11 @@ public class Controlador implements ActionListener
 			reporte.mostrar();	
 		}
 		
+		/*private List <PersonaDTO> seleccionarPersonas(){
+			
+			return personas;
+		}*/
+		
 		public void inicializar()
 		{
 			this.llenarTablaPersonas();
@@ -339,6 +347,13 @@ public class Controlador implements ActionListener
 			this.vista.getModelPersonas().setColumnIdentifiers(this.vista.getNombreColumnas());
 			
 			this.personas_en_tabla = agenda.obtenerPersonas();
+			
+			Collections.sort(personas_en_tabla, new Comparator<PersonaDTO>() {
+			    public int compare(PersonaDTO one, PersonaDTO other) {
+			        return one.getNombre().compareTo(other.getNombre());
+			    }
+			}); 
+			
 			for (int i = 0; i < this.personas_en_tabla.size(); i ++)
 			{
 				Object[] fila = {this.personas_en_tabla.get(i).getNombre(),
@@ -352,8 +367,8 @@ public class Controlador implements ActionListener
 						this.personas_en_tabla.get(i).getDpto(),
 						this.personas_en_tabla.get(i).getCategoria()					
 						};
-				this.vista.getModelPersonas().addRow(fila);			
-			}			
+				this.vista.getModelPersonas().addRow(fila);
+			}
 		}
 
 		private void llenarTablaLocalidades()

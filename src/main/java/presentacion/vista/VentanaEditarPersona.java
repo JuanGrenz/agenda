@@ -244,6 +244,15 @@ public class VentanaEditarPersona extends JFrame
 			JOptionPane.showMessageDialog(null, "Los campos nombre, numero telefono e email no pueden estar vacios.");
 			return false;
 		}
+		else if(comboBoxCategoriaContacto.getSelectedIndex() == -1) {
+			JOptionPane.showMessageDialog(null, "Debe seleccionar una categoria.");
+			return false;
+		}
+		
+		else if(comboBoxLocalidad.getSelectedIndex() == -1) {
+			JOptionPane.showMessageDialog(null, "Debe seleccionar una localidad");
+			return false;
+		}
 		return true;
 	}
 	
