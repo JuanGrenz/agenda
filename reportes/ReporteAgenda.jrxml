@@ -160,7 +160,7 @@
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="80" splitType="Stretch">
+		<band height="20" splitType="Stretch">
 			<textField>
 				<reportElement x="5" y="0" width="127" height="20" uuid="4a345b01-b751-4529-b6d6-2ccf3c13ff66"/>
 				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
@@ -204,7 +204,22 @@
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="102" splitType="Stretch"/>
+		<band height="102" splitType="Stretch">
+			<staticText>
+				<reportElement x="870" y="0" width="40" height="22" uuid="fac19c39-6d45-4b00-86e5-51834882b0ce"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="910" y="0" width="41" height="22" uuid="a177868a-7289-4615-8150-a2aebac7ad84"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{COLUMN_COUNT}]]></textFieldExpression>
+			</textField>
+		</band>
 	</columnFooter>
 	<pageFooter>
 		<band height="33" splitType="Stretch">

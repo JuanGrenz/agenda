@@ -3,8 +3,6 @@ package presentacion.controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 
@@ -104,9 +102,7 @@ public class Controlador implements ActionListener
 		}
 		
 		private PersonaDTO addPersona()
-		{
-//			java.sql.Date cumpleaños = new java.sql.Date(this.ventanaAgregarPersona.getTxtCumpleaños().getDate().getTime());
-			
+		{			
 			PersonaDTO nuevaPersona = new PersonaDTO(0,
 					this.ventanaAgregarPersona.getTxtNombre().getText(),
 					this.ventanaAgregarPersona.getTxtTelefono().getText(),
@@ -330,11 +326,6 @@ public class Controlador implements ActionListener
 			reporte.mostrar();	
 		}
 		
-		/*private List <PersonaDTO> seleccionarPersonas(){
-			
-			return personas;
-		}*/
-		
 		public void inicializar()
 		{
 			this.llenarTablaPersonas();
@@ -348,12 +339,6 @@ public class Controlador implements ActionListener
 			this.vista.getModelPersonas().setColumnIdentifiers(this.vista.getNombreColumnas());
 			
 			this.personas_en_tabla = agenda.obtenerPersonas();
-			
-			Collections.sort(personas_en_tabla, new Comparator<PersonaDTO>() {
-			    public int compare(PersonaDTO one, PersonaDTO other) {
-			        return one.getNombre().compareTo(other.getNombre());
-			    }
-			}); 
 			
 			for (int i = 0; i < this.personas_en_tabla.size(); i ++)
 			{
