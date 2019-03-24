@@ -339,7 +339,7 @@ public class Controlador implements ActionListener
 			this.vista.getModelPersonas().setColumnIdentifiers(this.vista.getNombreColumnas());
 			
 			this.personas_en_tabla = agenda.obtenerPersonas();
-			
+
 			for (int i = 0; i < this.personas_en_tabla.size(); i ++)
 			{
 				Object[] fila = {this.personas_en_tabla.get(i).getNombre(),
