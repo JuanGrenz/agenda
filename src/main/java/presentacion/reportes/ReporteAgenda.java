@@ -32,7 +32,7 @@ public class ReporteAgenda
     {
     	Collections.sort(personas, new Comparator<PersonaDTO>() {
 		    public int compare(PersonaDTO one, PersonaDTO other) {
-		        return one.getNombre().compareTo(other.getNombre());
+		        return one.getNombre().toLowerCase().compareTo(other.getNombre().toLowerCase());
 		    }
 		});
     	//Hardcodeado
