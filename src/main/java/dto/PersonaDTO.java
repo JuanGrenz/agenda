@@ -129,6 +129,7 @@ public class PersonaDTO
 		return localidad;
 	}
 	
+	@SuppressWarnings("deprecation")
 	public String setZodiaco() {
 		int dia = cumpleaños.getDate();
 		int mes = cumpleaños.getMonth();
@@ -137,86 +138,86 @@ public class PersonaDTO
 	    switch (mes) {
 	        case 0:
 	            if (dia > 21) {
-	                signo = "ACUARIO";
+	                signo = "Acuario";
 	            } else {
-	                signo = "CAPRICORNIO";
+	                signo = "Capricornio";
 	            }
 	            break;
 	        case 1:
 	                if (dia > 19) {
-	                    signo = "PISCIS";
+	                    signo = "Piscis";
 	                } else {
-	                    signo = "ACUARIO";
+	                    signo = "Acuario";
 	                }
 	                break;
 	        case 2:
 	                if (dia > 20) {
-	                    signo = "ARIES";
+	                    signo = "Aries";
 	                } else {
-	                    signo = "PISCIS";
+	                    signo = "Piscis";
 	                }
 	                break;
 	        case 3:
 	                if (dia > 20) {
-	                    signo = "TAURO";
+	                    signo = "Tauro";
 	                } else {
-	                    signo = "ARIES";
+	                    signo = "Aries";
 	                }
 	                break;
 	        case 4:
 	                if (dia > 21) {
-	                    signo = "GEMINIS";
+	                    signo = "Geminis";
 	                } else {
-	                    signo = "TAURO";
+	                    signo = "Tauro";
 	                }
 	                break;
 	        case 5:
 	                if (dia > 20) {
-	                    signo = "CANCER";
+	                    signo = "Cancer";
 	                } else {
-	                    signo = "GEMINIS";
+	                    signo = "Geminis";
 	                }
 	                break;
 	        case 6:
 	                if (dia > 22) {
-	                    signo = "LEO";
+	                    signo = "Leo";
 	                } else {
-	                    signo = "CANCER";
+	                    signo = "Cancer";
 	                }
 	                break;
 	        case 7:
 	                if (dia > 21) {
-	                    signo = "VIRGO";
+	                    signo = "Virgo";
 	                } else {
-	                    signo = "LEO";
+	                    signo = "Leo";
 	                }
 	                break;
 	        case 8:
 	                if (dia > 22) {
-	                    signo = "LIBRA";
+	                    signo = "Libra";
 	                } else {
-	                    signo = "VIRGO";
+	                    signo = "Virgo";
 	                }
 	                break;
 	        case 9:
 	                if (dia > 22) {
-	                    signo = "ESCORPIO";
+	                    signo = "Escorpio";
 	                } else {
-	                    signo = "LIBRA";
+	                    signo = "Libra";
 	                }
 	                break;
 	        case 10:
 	                if (dia > 21) {
-	                    signo = "SAGITARIO";
+	                    signo = "Sagitario";
 	                } else {
-	                    signo = "ESCORPIO";
+	                    signo = "Escorpio";
 	                }
 	                break;
 	        case 11:
 	                if (dia > 21) {
-	                    signo = "CAPRICORNIO";
+	                    signo = "Capricornio";
 	                } else {
-	                    signo = "SAGITARIO";
+	                    signo = "Sagitario";
 	                }
 	        break;
 	    }
