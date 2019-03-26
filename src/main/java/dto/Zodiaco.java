@@ -1,7 +1,28 @@
 package dto;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Zodiaco
 {
+	public List<String> obtenerZodiacos() {
+		List<String> zodiacos = new ArrayList<String>();
+		zodiacos.add("CAPRICORNIO");
+		zodiacos.add("ACUARIO");
+		zodiacos.add("PISCIS");
+		zodiacos.add("ARIES");
+		zodiacos.add("TAURO");
+		zodiacos.add("GEMINIS");
+		zodiacos.add("CANCER");
+		zodiacos.add("LEO");
+		zodiacos.add("VIRGO");
+		zodiacos.add("LIBRA");
+		zodiacos.add("ESCORPIO");
+		zodiacos.add("SAGITARIO");
+		
+		return zodiacos;		
+	}
+	
 
 	public String getZodiaco(int dia, int mes) {
 	 

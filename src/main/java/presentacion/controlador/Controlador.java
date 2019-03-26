@@ -20,6 +20,7 @@ import presentacion.vista.Vista;
 import dto.CategoriaDTO;
 import dto.LocalidadDTO;
 import dto.PersonaDTO;
+import dto.Zodiaco;
 
 public class Controlador implements ActionListener
 {
@@ -38,6 +39,7 @@ public class Controlador implements ActionListener
 		private VentanaCategoria ventanaCategoria;
 		private VentanaMensajeError ventanaError;
 		private Agenda agenda;
+		private Zodiaco zodiaco;
 		private int id;
 		
 		public Controlador(Vista vista, Agenda agenda)
@@ -74,6 +76,7 @@ public class Controlador implements ActionListener
 			this.ventanaEditarCategoria.getBtnConfirmar().addActionListener(p->editarCategoria(p));
 			
 			this.agenda = agenda;
+			this.zodiaco = new Zodiaco();
 			this.personas_en_tabla = new ArrayList<PersonaDTO>();
 			this.localidades_en_tabla = null;
 			this.categorias_en_tabla = null;
@@ -320,7 +323,9 @@ public class Controlador implements ActionListener
 		}
 
 		private void mostrarReporte(ActionEvent r) {
-			ReporteAgenda reporte = new ReporteAgenda(agenda.obtenerPersonas());
+			System.out.println(zodiaco.obtenerZodiacos());
+			ReporteAgenda reporte = new ReporteAgenda(agenda.obtenerPersonas(), zodiaco.obtenerZodiacos());
+			
 			
 			reporte.mostrar();	
 		}
