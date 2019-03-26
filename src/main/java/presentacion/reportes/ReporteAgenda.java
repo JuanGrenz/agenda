@@ -17,7 +17,6 @@ import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
 import dto.PersonaDTO;
-import dto.Zodiaco;
 
 public class ReporteAgenda
 {
@@ -25,19 +24,14 @@ public class ReporteAgenda
 	private JasperViewer reporteViewer;
 	private JasperPrint	reporteLleno;
 	private Logger log = Logger.getLogger(ReporteAgenda.class);
-	//private Zodiaco zodiaco;
 	
-	//Recibe la lista de personas para armar el reporte
-    public ReporteAgenda(List<PersonaDTO> personas, List<String> zodiaco)
+	
+    public ReporteAgenda(List<PersonaDTO> personas)
     {
 		Map<String, Object> parametersMap = new HashMap<String, Object>();
 		parametersMap.put("Fecha", new SimpleDateFormat("dd/MM/yyyy").format(new Date()));
-		parametersMap.put("Zodiaco", zodiaco);
 		
     	try		{
-//    		for (PersonaDTO persona : personas) {
-//    			String zodiacoPersona = zodiaco.getZodiaco(persona.getCumpleaños().getDate(), persona.getCumpleaños().getMonth());
-//    		}
 			this.reporte = (JasperReport) JRLoader.loadObjectFromFile( "reportes" + File.separator + "ReporteAgenda.jasper");
 			this.reporteLleno = JasperFillManager.fillReport(this.reporte, parametersMap, 
 					new JRBeanCollectionDataSource(personas));

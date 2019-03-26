@@ -141,7 +141,7 @@ public class VentanaAgregarPersona extends JFrame
 		
 		txtCumpleaños = new JDateChooser();
 		JTextFieldDateEditor editor = (JTextFieldDateEditor) txtCumpleaños.getDateEditor();
-		editor.setEditable(false);
+		editor.setEditable(false); 
 		txtCumpleaños.setBounds(199, 336, 207, 20);
 		panel.add(txtCumpleaños);
 		
