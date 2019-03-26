@@ -72,7 +72,7 @@ public class Zodiaco
 	                break;
 	        case 9:
 	                if (dia > 22) {
-	                    signo = "ESCORPION";
+	                    signo = "ESCORPIO";
 	                } else {
 	                    signo = "LIBRA";
 	                }
@@ -81,7 +81,7 @@ public class Zodiaco
 	                if (dia > 21) {
 	                    signo = "SAGITARIO";
 	                } else {
-	                    signo = "ESCORPION";
+	                    signo = "ESCORPIO";
 	                }
 	                break;
 	        case 11:

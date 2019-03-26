@@ -2,6 +2,7 @@ package presentacion.reportes;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -32,6 +33,20 @@ public class ReporteAgenda
     {
 		Map<String, Object> parametersMap = new HashMap<String, Object>();
 		parametersMap.put("Fecha", new SimpleDateFormat("dd/MM/yyyy").format(new Date()));
+		ArrayList<String> zodiacos = new ArrayList<String>();
+		zodiacos.add("CAPRICORNIO");
+		zodiacos.add("ACUARIO");
+		zodiacos.add("PISCIS");
+		zodiacos.add("ARIES");
+		zodiacos.add("TAURO");
+		zodiacos.add("GEMINIS");
+		zodiacos.add("CANCER");
+		zodiacos.add("LEO");
+		zodiacos.add("VIRGO");
+		zodiacos.add("LIBRA");
+		zodiacos.add("ESCORPIO");
+		zodiacos.add("SAGITARIO");
+		
 		
     	try		{
     		for (PersonaDTO persona : personas) {
