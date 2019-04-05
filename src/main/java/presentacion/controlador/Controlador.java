@@ -11,6 +11,7 @@ import presentacion.vista.VentanaAgregarCategoria;
 import presentacion.vista.VentanaAgregarLocalidad;
 import presentacion.vista.VentanaAgregarPersona;
 import presentacion.vista.VentanaCategoria;
+import presentacion.vista.VentanaConfiguracion;
 import presentacion.vista.VentanaEditarCategoria;
 import presentacion.vista.VentanaEditarLocalidad;
 import presentacion.vista.VentanaEditarPersona;
@@ -24,6 +25,7 @@ import dto.PersonaDTO;
 public class Controlador implements ActionListener
 {
 		private Vista vista;
+		private VentanaConfiguracion ventanaConfig;
 		private List<PersonaDTO> personas_en_tabla;
 		private List<LocalidadDTO> localidades_en_tabla;
 		private List<CategoriaDTO> categorias_en_tabla;
@@ -43,6 +45,7 @@ public class Controlador implements ActionListener
 		public Controlador(Vista vista, Agenda agenda)
 		{
 			this.vista = vista;
+			this.ventanaConfig = VentanaConfiguracion.getInstance();
 			this.ventanaAgregarPersona = VentanaAgregarPersona.getInstance();
 			this.ventanaLocalidad = VentanaLocalidad.getInstance();
 			this.ventanaCategoria = VentanaCategoria.getInstance();
@@ -77,6 +80,13 @@ public class Controlador implements ActionListener
 			this.personas_en_tabla = new ArrayList<PersonaDTO>();
 			this.localidades_en_tabla = null;
 			this.categorias_en_tabla = null;
+		}
+		
+		public void inicializar()
+		{
+			this.llenarTablaPersonas();
+			this.vista.show();
+			this.ventanaConfig.mostrarVentana();
 		}
 		
 		private void ventanaAgregarPersona(ActionEvent a)
@@ -321,12 +331,6 @@ public class Controlador implements ActionListener
 			ReporteAgenda reporte = new ReporteAgenda(agenda.obtenerPersonas());
 			
 			reporte.mostrar();	
-		}
-		
-		public void inicializar()
-		{
-			this.llenarTablaPersonas();
-			this.vista.show();
 		}
 	
 		private void llenarTablaPersonas()
