@@ -121,7 +121,7 @@ public class Controlador implements ActionListener
 			inicializar();
 		}
 		
-		public void inicializar()
+		public void inicializar()  throws FileNotFoundException, ClassNotFoundException, SQLException, IOException, InvalidPropertiesException 
 		{
 			this.llenarTablaPersonas();
 			this.vista.show();

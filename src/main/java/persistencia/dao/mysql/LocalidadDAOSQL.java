@@ -1,5 +1,6 @@
 package persistencia.dao.mysql;
 
+import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -7,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dto.LocalidadDTO;
+import excepciones.InvalidPropertiesException;
 import persistencia.conexion.Conexion;
 import persistencia.dao.interfaz.LocalidadDAO;
 import presentacion.vista.VentanaMensajeError;
@@ -32,7 +34,7 @@ public class LocalidadDAOSQL implements LocalidadDAO{
 			if(statement.executeUpdate() > 0) //Si se ejecut� devuelvo true
 				return true;
 		} 
-		catch (SQLException e) 
+		catch (SQLException | ClassNotFoundException | IOException | InvalidPropertiesException e) 
 		{
 			e.printStackTrace();
 		}
@@ -53,7 +55,7 @@ public class LocalidadDAOSQL implements LocalidadDAO{
 			if(chequeoUpdate > 0) //Si se ejecutó devuelvo true
 				return true;
 		} 
-		catch (SQLException e) 
+		catch (SQLException | ClassNotFoundException | IOException | InvalidPropertiesException e) 
 		{
 			VME.getError().setText("No puede borrar una localidad en uso.");
 			VME.mostrarVentana();
@@ -79,7 +81,7 @@ public class LocalidadDAOSQL implements LocalidadDAO{
 						));
 			}
 		} 
-		catch (SQLException e) 
+		catch (SQLException | ClassNotFoundException | IOException | InvalidPropertiesException e) 
 		{
 			e.printStackTrace();
 		}
@@ -99,7 +101,7 @@ public class LocalidadDAOSQL implements LocalidadDAO{
 			if(statement.executeUpdate() > 0) //Si se ejecut� devuelvo true
 				return true;
 			} 
-		catch (SQLException e) 
+		catch (SQLException | ClassNotFoundException | IOException | InvalidPropertiesException e) 
 		{
 			e.printStackTrace();
 		}

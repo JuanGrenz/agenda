@@ -1,5 +1,6 @@
 package persistencia.dao.mysql;
 
+import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,6 +10,7 @@ import java.util.List;
 import persistencia.conexion.Conexion;
 import persistencia.dao.interfaz.PersonaDAO;
 import dto.PersonaDTO;
+import excepciones.InvalidPropertiesException;
 
 public class PersonaDAOSQL implements PersonaDAO
 {
@@ -36,14 +38,14 @@ public class PersonaDAOSQL implements PersonaDAO
 			statement.setString(9, persona.getDpto());
 			statement.setString(10, persona.getLocalidad());
 			statement.setString(11, persona.getCategoria());
+			
 			if(statement.executeUpdate() > 0) //Si se ejecut� devuelvo true
 				return true;
 		} 
-		catch (SQLException e) 
+		catch (SQLException | ClassNotFoundException | IOException | InvalidPropertiesException e) 
 		{
 			e.printStackTrace();
 		}
-		
 		return false;
 	}
 	
@@ -60,7 +62,7 @@ public class PersonaDAOSQL implements PersonaDAO
 			if(chequeoUpdate > 0) //Si se ejecutó devuelvo true
 				return true;
 			} 
-			catch (SQLException e) 
+			catch (SQLException | ClassNotFoundException | IOException | InvalidPropertiesException e) 
 			{
 				e.printStackTrace();
 			}
@@ -95,7 +97,7 @@ public class PersonaDAOSQL implements PersonaDAO
 						));
 			}
 		} 
-		catch (SQLException e) 
+		catch (SQLException | ClassNotFoundException | IOException | InvalidPropertiesException e) 
 		{
 			e.printStackTrace();
 		}
@@ -124,7 +126,7 @@ public class PersonaDAOSQL implements PersonaDAO
 			if(statement.executeUpdate() > 0) //Si se ejecut� devuelvo true
 				return true;
 			} 
-		catch (SQLException e) 
+		catch (SQLException | ClassNotFoundException | IOException | InvalidPropertiesException e) 
 		{
 			e.printStackTrace();
 		}

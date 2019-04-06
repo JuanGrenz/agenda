@@ -1,5 +1,6 @@
 package persistencia.dao.mysql;
 
+import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -7,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dto.CategoriaDTO;
+import excepciones.InvalidPropertiesException;
 import persistencia.conexion.Conexion;
 import persistencia.dao.interfaz.CategoriaDAO;
 import presentacion.vista.VentanaMensajeError;
@@ -33,7 +35,7 @@ public class CategoriaDAOSQL implements CategoriaDAO{
 			if(statement.executeUpdate() > 0) //Si se ejecut� devuelvo true
 				return true;
 		} 
-		catch (SQLException e) 
+		catch (SQLException | ClassNotFoundException | IOException | InvalidPropertiesException e) 
 		{
 			e.printStackTrace();
 		}
@@ -54,7 +56,7 @@ public class CategoriaDAOSQL implements CategoriaDAO{
 			if(chequeoUpdate > 0) //Si se ejecutó devuelvo true
 				return true;
 		} 
-		catch (SQLException e) 
+		catch (SQLException | ClassNotFoundException | IOException | InvalidPropertiesException e) 
 		{
 			VME.getError().setText("No se puede borrar una categoria en uso.");
 			VME.mostrarVentana();
@@ -80,7 +82,7 @@ public class CategoriaDAOSQL implements CategoriaDAO{
 						));
 			}
 		} 
-		catch (SQLException e) 
+		catch (SQLException | ClassNotFoundException | IOException | InvalidPropertiesException e) 
 		{
 			e.printStackTrace();
 		}
@@ -100,7 +102,7 @@ public class CategoriaDAOSQL implements CategoriaDAO{
 			if(statement.executeUpdate() > 0) //Si se ejecut� devuelvo true
 				return true;
 			} 
-		catch (SQLException e) 
+		catch (SQLException | ClassNotFoundException | IOException | InvalidPropertiesException e) 
 		{
 			e.printStackTrace();
 		}

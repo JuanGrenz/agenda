@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -26,16 +25,16 @@ public class Conexion
 	
 	private Conexion()
 	{
-		try
-		{
-			Class.forName("com.mysql.jdbc.Driver"); // quitar si no es necesario
-			this.connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/agenda","root","pass");
-			log.info("Conexión exitosa");
-		}
-		catch(Exception e)
-		{
-			log.error("Conexión fallida", e);
-		}
+//		try
+//		{
+//			Class.forName("com.mysql.jdbc.Driver"); // quitar si no es necesario
+//			this.connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/agenda","root","pass");
+//			log.info("Conexión exitosa");
+//		}
+//		catch(Exception e)
+//		{
+//			log.error("Conexión fallida", e);
+//		}
 	}
 	
 	
