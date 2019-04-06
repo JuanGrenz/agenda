@@ -61,7 +61,8 @@ public class Controlador implements ActionListener
 			this.vista.getBtnEditar().addActionListener(e->ventanaEditarPersona(e));
 			this.vista.getBtnReporte().addActionListener(r->mostrarReporte(r));
 			this.vista.getBtnLocalidad().addActionListener(l->ventanaLocalidad(l));
-			this.vista.getBtnCategoria().addActionListener(c->ventanaCategoria(c));		
+			this.vista.getBtnCategoria().addActionListener(c->ventanaCategoria(c));
+			this.vista.getBtnConfig().addActionListener(j->ventanaConfiguracion(j));
 			this.ventanaLocalidad.getBtnAgregar().addActionListener(a->ventanaAgregarLocalidad(a));
 			this.ventanaLocalidad.getBtnBorrar().addActionListener(s->borrarLocalidad(s));
 			this.ventanaLocalidad.getBtnEditar().addActionListener(l->ventanaEditarLocalidad(l));
@@ -86,9 +87,12 @@ public class Controlador implements ActionListener
 		{
 			this.llenarTablaPersonas();
 			this.vista.show();
-			this.ventanaConfig.mostrarVentana();
 		}
 		
+		private void ventanaConfiguracion(ActionEvent j) {
+			this.ventanaConfig.mostrarVentana();
+		}
+
 		private void ventanaAgregarPersona(ActionEvent a)
 		{
 			this.llenarComboBox();

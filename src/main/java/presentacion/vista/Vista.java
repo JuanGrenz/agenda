@@ -23,6 +23,7 @@ public class Vista
 	private JButton btnLocalidad;
 	private JButton btnCategoria;
 	private JButton btnEditar;
+	private JButton btnConfig;
 
 	public Vista() 
 	{
@@ -76,6 +77,10 @@ public class Vista
 		btnCategoria = new JButton("Categoria");
 		btnCategoria.setBounds(755, 285, 89, 23);
 		panel.add(btnCategoria);
+		
+		btnConfig = new JButton("Configuracion IP");
+		btnConfig.setBounds(406, 285, 138, 23);
+		panel.add(btnConfig);
 	}
 	
 	public void show()
@@ -126,6 +131,11 @@ public class Vista
 	public JButton getBtnCategoria()
 	{
 		return btnCategoria;
+	}
+	
+	public JButton getBtnConfig()
+	{
+		return btnConfig;
 	}
 	
 	public DefaultTableModel getModelPersonas() 
