@@ -8,7 +8,6 @@ import persistencia.dao.mysql.DAOSQLFactory;
 import presentacion.controlador.Controlador;
 import presentacion.vista.Vista;
 
-
 public class Main 
 {
 
@@ -17,12 +16,12 @@ public class Main
 		Vista vista = new Vista();
 		Agenda modelo = new Agenda(new DAOSQLFactory());
 		Controlador controlador = new Controlador(vista, modelo);
-		try {
+//		try {
 			controlador.inicializar();
-		}
-		catch(ClassNotFoundException | SQLException | IOException | InvalidPropertiesException e){
-			controlador.inicializarConfig();
-		}
+//		}
+//		catch(ClassNotFoundException | SQLException | IOException | InvalidPropertiesException e){
+//			controlador.inicializarConfig();
+//		}
 	}
 }
  

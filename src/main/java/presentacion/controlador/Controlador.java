@@ -12,6 +12,7 @@ import java.util.Properties;
 import javax.swing.JOptionPane;
 
 import modelo.Agenda;
+import persistencia.conexion.Conexion;
 import presentacion.reportes.ReporteAgenda;
 import presentacion.vista.VentanaAgregarCategoria;
 import presentacion.vista.VentanaAgregarLocalidad;
@@ -101,6 +102,7 @@ public class Controlador implements ActionListener
 		}
 		
 		private void guardarProperties(ActionEvent e) throws FileNotFoundException, ClassNotFoundException, SQLException, IOException, InvalidPropertiesException {
+			
 			String ip = this.ventanaConfig.getTxtIP().getText();
 			String port = this.ventanaConfig.getTxtPort().getText();
 			String user = this.ventanaConfig.getTxtUser().getText();
@@ -121,10 +123,14 @@ public class Controlador implements ActionListener
 			inicializar();
 		}
 		
-		public void inicializar()  throws FileNotFoundException, ClassNotFoundException, SQLException, IOException, InvalidPropertiesException 
+		public void inicializar() /*throws FileNotFoundException, ClassNotFoundException, SQLException, IOException, InvalidPropertiesException*/ 
 		{
 			this.llenarTablaPersonas();
-			this.vista.show();
+			this.vista.show();	
+			if (Conexion.darBienvenida())
+			{
+				this.ventanaConfig.mostrarVentana();
+			}
 		}
 		
 		public void inicializarConfig()

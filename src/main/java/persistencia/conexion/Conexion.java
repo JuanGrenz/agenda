@@ -75,10 +75,7 @@ public class Conexion
 	}
 
 	private void connect() throws FileNotFoundException, IOException, ClassNotFoundException, InvalidPropertiesException {
-		  String cwd = System.getProperty("user.dir");
-	        System.out.println("Current working directory : " + cwd);
-		System.out.println(" propertiesPath: " + cwd + "/db.properties");
-		// FileInputStream fileInput = new FileInputStream(file);
+		String cwd = System.getProperty("user.dir");
 		File file = new File(cwd + "/db.properties");
 		FileInputStream fileInput = new FileInputStream(file);
 		properties.load(fileInput);
