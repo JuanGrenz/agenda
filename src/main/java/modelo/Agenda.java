@@ -1,6 +1,9 @@
 package modelo;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.util.List;
+import java.util.Properties;
 
 import dto.CategoriaDTO;
 import dto.LocalidadDTO;
@@ -84,4 +87,18 @@ public class Agenda
 		return this.localidad.readAll();		
 	}
 	
+	public void guardarProperties(Properties properties) {
+		  String cwd = System.getProperty("user.dir");
+	        System.out.println("Current working directory : " + cwd);
+		System.out.println(" propertiesPath: " + cwd + "/db.properties");
+		File file = new File(cwd + "/db.properties");
+		try {
+
+			FileOutputStream fr = new FileOutputStream(file);
+			properties.store(fr, "Properties");
+			fr.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }

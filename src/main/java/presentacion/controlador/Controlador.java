@@ -2,8 +2,14 @@ package presentacion.controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
+
+import javax.swing.JOptionPane;
 
 import modelo.Agenda;
 import presentacion.reportes.ReporteAgenda;
@@ -21,6 +27,7 @@ import presentacion.vista.Vista;
 import dto.CategoriaDTO;
 import dto.LocalidadDTO;
 import dto.PersonaDTO;
+import excepciones.InvalidPropertiesException;
 
 public class Controlador implements ActionListener
 {
@@ -77,10 +84,41 @@ public class Controlador implements ActionListener
 			this.ventanaAgregarCategoria.getBtnConfirmar().addActionListener(c->guardarCategoria(c));
 			this.ventanaEditarCategoria.getBtnConfirmar().addActionListener(p->editarCategoria(p));
 			
+			this.ventanaConfig.getBtnConfirmar().addActionListener(c->guardarConfiguracion(c));
+			
 			this.agenda = agenda;
 			this.personas_en_tabla = new ArrayList<PersonaDTO>();
 			this.localidades_en_tabla = null;
 			this.categorias_en_tabla = null;
+		}
+		
+		private void guardarConfiguracion(ActionEvent c) {
+			try {
+				guardarProperties(c);
+			} catch (Exception er) {
+				JOptionPane.showMessageDialog(null, er.getMessage(), "¡Error!", JOptionPane.ERROR_MESSAGE);
+			}
+		}
+		
+		private void guardarProperties(ActionEvent e) throws FileNotFoundException, ClassNotFoundException, SQLException, IOException, InvalidPropertiesException {
+			String ip = this.ventanaConfig.getTxtIP().getText();
+			String port = this.ventanaConfig.getTxtPort().getText();
+			String user = this.ventanaConfig.getTxtUser().getText();
+			String password = this.ventanaConfig.getTxtPass().getText();
+
+			Properties properties = new Properties();
+
+			properties.setProperty("ip", ip);
+			properties.setProperty("port", port);
+			properties.setProperty("user", user);
+			properties.setProperty("password", password);
+			properties.setProperty("bienvenida", "false");
+
+			this.agenda.guardarProperties(properties);
+			
+			this.ventanaConfig.setVisible(false);
+			
+			inicializar();
 		}
 		
 		public void inicializar()

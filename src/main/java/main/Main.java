@@ -1,5 +1,8 @@
 package main;
 
+import java.io.IOException;
+import java.sql.SQLException;
+
 import modelo.Agenda;
 import persistencia.dao.mysql.DAOSQLFactory;
 import presentacion.controlador.Controlador;
@@ -15,6 +18,11 @@ public class Main
 		Agenda modelo = new Agenda(new DAOSQLFactory());
 		Controlador controlador = new Controlador(vista, modelo);
 		controlador.inicializar();
+		try {
+			controlador.inicializar();
+		} catch (ClassNotFoundException | SQLException | IOException | InvalidPropertiesException e) {
+			controlador.inicializarConfig();
+		}
 	}
 }
  
