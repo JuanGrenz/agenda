@@ -89,6 +89,11 @@ public class Controlador implements ActionListener
 			this.vista.show();
 		}
 		
+		public void inicializarConfig()
+		{
+			this.ventanaConfig.mostrarVentana();
+		}
+		
 		private void ventanaConfiguracion(ActionEvent j) {
 			this.ventanaConfig.mostrarVentana();
 		}
