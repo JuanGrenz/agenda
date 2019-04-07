@@ -23,18 +23,8 @@ public class Conexion
 	private static Properties properties = new Properties();
 	private static boolean configurar;
 	
-	private Conexion()
-	{
-//		try
-//		{
-//			Class.forName("com.mysql.jdbc.Driver"); // quitar si no es necesario
-//			this.connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/agenda","root","pass");
-//			log.info("Conexión exitosa");
-//		}
-//		catch(Exception e)
-//		{
-//			log.error("Conexión fallida", e);
-//		}
+	private Conexion(){
+
 	}
 	
 	
@@ -79,7 +69,6 @@ public class Conexion
 		File file = new File(cwd + "/db.properties");
 		FileInputStream fileInput = new FileInputStream(file);
 		properties.load(fileInput);
-		// propertiesPath.close();
 		Class.forName("com.mysql.jdbc.Driver"); // quitar si no es necesario
 		fileInput.close();
 		String ip = properties.getProperty("ip");
@@ -87,7 +76,7 @@ public class Conexion
 		String user = properties.getProperty("user");
 		
 		String password = properties.getProperty("password");
-		configurar = Boolean.parseBoolean((String) properties.get("bienvenida"));
+		configurar = Boolean.parseBoolean((String) properties.get("check"));
 		
 		try {
 			this.connection = DriverManager.getConnection("jdbc:mysql://" + ip + ":" + port + "/agenda", user, password);
@@ -97,7 +86,7 @@ public class Conexion
 		log.info("Conexión exitosa");
 	}
 	
-	public static boolean darBienvenida() {
+	public static boolean getCheck() {
 		return configurar;
 	}
 }

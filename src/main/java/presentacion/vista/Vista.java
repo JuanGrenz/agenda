@@ -71,15 +71,15 @@ public class Vista
 		panel.add(btnReporte);
 		
 		btnLocalidad = new JButton("Localidad");
-		btnLocalidad.setBounds(654, 285, 89, 23);
+		btnLocalidad.setBounds(616, 285, 109, 23);
 		panel.add(btnLocalidad);
 		
 		btnCategoria = new JButton("Categoria");
-		btnCategoria.setBounds(755, 285, 89, 23);
+		btnCategoria.setBounds(735, 285, 109, 23);
 		panel.add(btnCategoria);
 		
-		btnConfig = new JButton("Configuracion IP");
-		btnConfig.setBounds(406, 285, 138, 23);
+		btnConfig = new JButton("Configuracion");
+		btnConfig.setBounds(406, 285, 99, 23);
 		panel.add(btnConfig);
 	}
 	

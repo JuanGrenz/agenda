@@ -88,9 +88,7 @@ public class Agenda
 	}
 	
 	public void guardarProperties(Properties properties) {
-		  String cwd = System.getProperty("user.dir");
-	        System.out.println("Current working directory : " + cwd);
-		System.out.println(" propertiesPath: " + cwd + "/db.properties");
+		String cwd = System.getProperty("user.dir");
 		File file = new File(cwd + "/db.properties");
 		try {
 

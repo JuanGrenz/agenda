@@ -93,6 +93,16 @@ public class Controlador implements ActionListener
 			this.categorias_en_tabla = null;
 		}
 		
+		public void inicializar() 
+		{
+			this.llenarTablaPersonas();
+			this.vista.show();	
+			if (Conexion.getCheck())
+			{
+				this.ventanaConfig.mostrarVentana();
+			}
+		}
+		
 		private void guardarConfiguracion(ActionEvent c) {
 			try {
 				guardarProperties(c);
@@ -114,7 +124,7 @@ public class Controlador implements ActionListener
 			properties.setProperty("port", port);
 			properties.setProperty("user", user);
 			properties.setProperty("password", password);
-			properties.setProperty("bienvenida", "false");
+			properties.setProperty("check", "false");
 
 			this.agenda.guardarProperties(properties);
 			
@@ -123,15 +133,7 @@ public class Controlador implements ActionListener
 			inicializar();
 		}
 		
-		public void inicializar() /*throws FileNotFoundException, ClassNotFoundException, SQLException, IOException, InvalidPropertiesException*/ 
-		{
-			this.llenarTablaPersonas();
-			this.vista.show();	
-			if (Conexion.darBienvenida())
-			{
-				this.ventanaConfig.mostrarVentana();
-			}
-		}
+		
 		
 		public void inicializarConfig()
 		{
