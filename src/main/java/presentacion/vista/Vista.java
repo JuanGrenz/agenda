@@ -34,11 +34,13 @@ public class Vista
 
 	private void initialize() 
 	{
+		
 		frmAgenda = new JFrame();
 		frmAgenda.setTitle("Agenda");
 		frmAgenda.setBounds(100, 100, 870, 358);
 		frmAgenda.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmAgenda.getContentPane().setLayout(null);
+		frmAgenda.setResizable(false);
 		
 		JPanel panel = new JPanel();
 		panel.setBounds(0, 0, 854, 319);
@@ -79,7 +81,7 @@ public class Vista
 		panel.add(btnCategoria);
 		
 		btnConfig = new JButton("Configuracion");
-		btnConfig.setBounds(406, 285, 99, 23);
+		btnConfig.setBounds(406, 285, 137, 23);
 		panel.add(btnConfig);
 	}
 	

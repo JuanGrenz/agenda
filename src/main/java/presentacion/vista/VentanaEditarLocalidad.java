@@ -27,6 +27,7 @@ public class VentanaEditarLocalidad extends JFrame
 	private VentanaEditarLocalidad() 
 	{
 		super();
+		setResizable(false);
 		setTitle("Editar localidad");
 		
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

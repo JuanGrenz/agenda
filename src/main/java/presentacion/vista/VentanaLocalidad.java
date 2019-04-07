@@ -32,6 +32,7 @@ public class VentanaLocalidad extends JFrame
 	private VentanaLocalidad() 
 	{
 		super();
+		setResizable(false);
 		setTitle("ABM Localidad");
 		
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

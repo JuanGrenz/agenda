@@ -43,6 +43,7 @@ public class VentanaAgregarPersona extends JFrame
 	private VentanaAgregarPersona() 
 	{
 		super();
+		setResizable(false);
 		setTitle("Agregar persona");
 		
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

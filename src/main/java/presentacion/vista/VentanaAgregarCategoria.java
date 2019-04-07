@@ -27,6 +27,7 @@ public class VentanaAgregarCategoria extends JFrame
 	private VentanaAgregarCategoria() 
 	{
 		super();
+		setResizable(false);
 		setTitle("Agregar categoria");
 		
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

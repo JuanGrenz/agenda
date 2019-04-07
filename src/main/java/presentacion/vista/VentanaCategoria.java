@@ -32,6 +32,7 @@ public class VentanaCategoria extends JFrame
 	private VentanaCategoria() 
 	{
 		super();
+		setResizable(false);
 		setTitle("ABM Categoria");
 		
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

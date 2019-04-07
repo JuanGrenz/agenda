@@ -27,6 +27,7 @@ public class VentanaAgregarLocalidad extends JFrame
 	private VentanaAgregarLocalidad() 
 	{
 		super();
+		setResizable(false);
 		setTitle("Agregar localidad");
 		
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

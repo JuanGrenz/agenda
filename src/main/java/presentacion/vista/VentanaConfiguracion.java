@@ -30,6 +30,7 @@ public class VentanaConfiguracion extends JFrame
 		private VentanaConfiguracion() 
 		{
 			super();
+			setResizable(false);
 			setTitle("Configuracion de red");
 			
 			setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

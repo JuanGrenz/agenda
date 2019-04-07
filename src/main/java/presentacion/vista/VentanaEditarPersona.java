@@ -44,6 +44,7 @@ public class VentanaEditarPersona extends JFrame
 	private VentanaEditarPersona() 
 	{
 		super();
+		setResizable(false);
 		setTitle("Editar persona");
 		
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

@@ -27,6 +27,7 @@ public class VentanaEditarCategoria extends JFrame
 	private VentanaEditarCategoria() 
 	{
 		super();
+		setResizable(false);
 		setTitle("Editar categoria");
 		
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
